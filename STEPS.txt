@@ -1,0 +1,23 @@
+0. Set-up CodeEditor
+1. Set-up CodeIgniter
+2. Set-up Bootstrap
+    - Buat folder assets
+    - Isikan semua file media, css, js, dsb.
+    - 
+3. Set-up Master Controller
+4. Set-up config->routes.php (default_controller)
+5. Set-up config->config.php (base_url)
+
+
+
+Menghilangkan index.php
+config.php -> $config['index_page'] = '';
+.htaccess
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+Integrate Bootstrap
+http://www.kodingmadesimple.com/2014/06/integrate-twitter-bootstrap3-with-codeigniter-framework.html

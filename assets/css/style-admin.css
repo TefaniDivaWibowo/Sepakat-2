@@ -1,0 +1,22 @@
+.main-header{
+  background-color: #2fa0d7;
+  color: white;
+}
+
+.logo{
+  color: white;
+  background-color: #2893c7;
+}
+
+.main-sidebar{
+  background-color: #0a0a0a;
+  color:white;
+}
+
+.admin-content{
+  padding-left: 240px;
+}
+
+.navbar-nav > li > a {
+    color: white;
+}
