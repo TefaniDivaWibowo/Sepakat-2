@@ -119,7 +119,12 @@ function closeNav() {
                 echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
                 echo "<li class=''><a href='" . base_url('Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li> ";
                 echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
-            } 
+            }else{
+                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
+                echo "<li class=''><a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
+                echo "<li class=''><a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
+                echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
+            }
         ?>
 
       </ul>
@@ -129,8 +134,25 @@ function closeNav() {
 
 <div id="mySidenav" class="sidenav">
  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
- <a href="<?php echo base_url();?>home">Beranda</a>
- <a href="<?php echo base_url();?>perusahaan">Cari Perusahaan</a>
- <a href="<?php echo base_url();?>penyedia">Cari Penyedia</a>
- <a>Login</a>
+ <?php
+     if($this->session->userdata('status') != "login"){
+         echo "<a href='". base_url('Home/') . "'>Beranda</a>";
+         echo "<a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a>";
+         echo "<a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a>";
+         echo "<a href='". base_url('Login/') ."'>Login</a>";
+     }elseif ($this->session->userdata('tipe_user') == 'manufaktur' && $this->session->userdata('status') == "login") {
+         echo " <a href='". base_url('Home/') . "'>Beranda</a></li>";
+         echo "<a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li>";
+         echo "<a href='". base_url('Login/logout') ."'>Logout</a></li>";
+     }elseif ($this->session->userdata('tipe_user') == 'bahan baku' && $this->session->userdata('status') == "login") {
+         echo "<a href='". base_url('Home/') . "'>Beranda</a></li>";
+         echo "<a href='" . base_url('Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li>";
+         echo "<a href='". base_url('Login/logout') ."'>Logout</a></li>";
+     }else{
+         echo "<a href='". base_url('Home/') . "'>Beranda</a>";
+         echo "<a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a>";
+         echo "<a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a>";
+         echo "<a href='". base_url('Login/logout') ."'>Logout</a>";
+     }
+ ?>
 </div>
