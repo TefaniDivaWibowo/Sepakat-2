@@ -5,6 +5,11 @@ Class Model_bahan_baku extends CI_Model {
 		$this->load->database();
 	}
 
+	function get_bahan(){
+		$query = $this->db->get('bahan_baku');
+		return $query->result_array();
+	}
+
 	function select_data(){
 		$bahan_baku = $this->db
 		->select('id_bahan_baku, nama, alamat, no_telp, email, bukti, total_produksi, kategori.kategori, barang_bahan, bahan_baku.provinsi, kota.kota, id_user')
@@ -41,6 +46,61 @@ Class Model_bahan_baku extends CI_Model {
         
         return $this->db->get();
 	}
+
+	public function carri($ban)
+    {
+       if($ban >=3000)
+      {
+        $this->db->where('total_produksi >=',$ban);
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+      }elseif($ban >=1000 AND $ban <3000)
+      {
+        $this->db->where('total_produksi <3000 and total_produksi >=1000');
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+      }
+      elseif($ban >=500 AND $ban <1000)
+      {
+        $this->db->where('total_produksi <1000 and total_produksi >=500');
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+      }
+      elseif($ban <500)
+      {
+        $this->db->where('total_produksi <500');
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+      }
+    }
+   public function carr($keyword)
+    {
+       $this->db->where('tipe', $keyword);
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+    }
+    public function gab(){
+      $this->db
+      ->where('tipe', $keyword)
+      ->where('total_produksi >=',$ban);
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+    }
+	  public function carl($rad)
+    {
+      if($rad == "terbaru")
+      {
+        $this->db->order_by('jam','asc');
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+      }else{
+        $this->db->order_by('jam','desc');
+        $query = $this->db->get('bahan_baku');
+        return $query->result_array();
+      }
+      
+    }
+
 
 }
 
