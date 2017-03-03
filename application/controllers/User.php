@@ -11,7 +11,7 @@
 			$data['user'] = $this->model_user->select_data();
 			$this->load->view('admin-header');
 			$this->load->view('admin-user', $data);
-     		$this->load->view('admin-footer');
+     	$this->load->view('admin-footer');
 		}
 
 		public function hapus_user($id_user){

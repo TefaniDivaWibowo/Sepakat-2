@@ -4,7 +4,7 @@
   	//Controller nya juga tak samakan
 
   	function __construct(){
-		parent::__construct();		
+		parent::__construct();
 		$this->load->model('model_login');
 		$this->load->library('session');
 	}
@@ -25,7 +25,7 @@
 			$data['teror'] = "";
 				break;
 		}
-			
+
 			if ($this->session->userdata('tipe_user') == null){
 				$this->load->view('login', $data);
 			}
@@ -56,7 +56,7 @@
 				$this->session->set_userdata('konfirmasi', $q['konfirmasi']);
 				$this->session->set_userdata('username', $q['username']);
 				$this->session->set_userdata('status', 'login');
-				
+
 				if($q['perusahaan'] == "manufaktur" && $q['konfirmasi'] == 1 ){
 					$this->load->view('header');
 					$this->load->view('rumah');
@@ -92,7 +92,7 @@
 		else {
 			$this->error = "<script>alert('Username/Password Kosong');</script>";
 			redirect('login?err=upk');
-		} 
+		}
 	}
 
 	public function routeAdmin($userid)
@@ -105,6 +105,7 @@
 		$this->session->unset_userdata('tipe_user');
 		$this->session->unset_userdata('id_user');
 		$this->session->sess_destroy();
+    session_destroy();
 		redirect(base_url());
 	}
 

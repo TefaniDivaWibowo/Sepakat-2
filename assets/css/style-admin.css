@@ -14,7 +14,10 @@
 }
 
 .admin-content{
-  padding-left: 240px;
+  /*padding-left: 240px;*/
+  /*overflow-x: scroll;*/
+  overflow-y: scroll;
+  height: 90%;
 }
 
 .navbar-nav > li > a {

@@ -15,11 +15,4 @@ class Manufaktur extends CI_Controller {
       $this->load->view('perusahaan-list');
       $this->load->view('footer');
 	}
-
-	public function admin(){
-		$data['manufaktur'] = $this->model_manufaktur->select_data();
-	    $this->load->view('admin-header');
-	    $this->load->view('admin-manufaktur', $data);
-	    $this->load->view('admin-footer');
-    }
 }
