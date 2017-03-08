@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Feb 2017 pada 05.13
--- Versi Server: 5.6.21
+-- Generation Time: Mar 08, 2017 at 04:18 AM
+-- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,49 +19,60 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sepakat`
 --
+CREATE DATABASE IF NOT EXISTS `db_sepakat` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `db_sepakat`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan_baku`
+-- Table structure for table `bahan_baku`
 --
 
 CREATE TABLE IF NOT EXISTS `bahan_baku` (
-`id_bahan_baku` int(11) NOT NULL,
+  `id_bahan_baku` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
   `email` varchar(40) NOT NULL,
   `bukti` varchar(50) NOT NULL,
   `total_produksi` varchar(50) NOT NULL,
+  `tipe` varchar(20) NOT NULL,
+  `jam` datetime NOT NULL,
   `kategori` varchar(50) DEFAULT NULL,
   `barang_bahan` varchar(50) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `kota` varchar(20) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `deskripsi` varchar(2000) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_bahan_baku`),
+  UNIQUE KEY `id_kategori_pbb` (`kategori`),
+  UNIQUE KEY `id_kota` (`kota`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data untuk tabel `bahan_baku`
+-- Dumping data for table `bahan_baku`
 --
 
-INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `total_produksi`, `kategori`, `barang_bahan`, `provinsi`, `kota`, `id_user`) VALUES
-(12, 'Next', 'Next', 90, 'Next@gmail.com', '', '800', 'Peternakan', 'Kerbau', 'Aceh', 'Banda Aceh', NULL);
+INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `total_produksi`, `tipe`, `jam`, `kategori`, `barang_bahan`, `provinsi`, `kota`, `deskripsi`, `id_user`) VALUES
+(12, 'Next', 'Next', 90, 'Next@gmail.com', '', '800', 'Perusahaan Besar', '2017-02-02 10:13:18', 'Perkebunan', 'Kerbau', 'Aceh', 'Banda Aceh', '', NULL),
+(14, 'PT.Milkyway', 'Jl.adigung 124', 89765123, 'Milky.Way@gmail.com', '', '3000', 'Perusahaan Sedang', '2017-02-01 08:09:28', 'Peternakan', 'susu', 'Bali', '6', '', 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang_bahan`
+-- Table structure for table `barang_bahan`
 --
 
 CREATE TABLE IF NOT EXISTS `barang_bahan` (
-`id_bb` int(11) NOT NULL,
+  `id_bb` int(11) NOT NULL AUTO_INCREMENT,
   `nama_bb` varchar(50) NOT NULL,
-  `id_kategori` int(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=539 DEFAULT CHARSET=latin1;
+  `id_kategori` int(20) NOT NULL,
+  PRIMARY KEY (`id_bb`),
+  KEY `id_kategori` (`id_kategori`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=539 ;
 
 --
--- Dumping data untuk tabel `barang_bahan`
+-- Dumping data for table `barang_bahan`
 --
 
 INSERT INTO `barang_bahan` (`id_bb`, `nama_bb`, `id_kategori`) VALUES
@@ -275,16 +286,17 @@ INSERT INTO `barang_bahan` (`id_bb`, `nama_bb`, `id_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori` (
-`id_kategori` int(11) NOT NULL,
-  `kategori` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
@@ -345,29 +357,33 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kerjasama`
+-- Table structure for table `kerjasama`
 --
 
 CREATE TABLE IF NOT EXISTS `kerjasama` (
-`id_kerjasama` int(11) NOT NULL,
+  `id_kerjasama` int(11) NOT NULL AUTO_INCREMENT,
   `id_manufaktur` int(20) NOT NULL,
-  `id_bahan_baku` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_bahan_baku` int(20) NOT NULL,
+  PRIMARY KEY (`id_kerjasama`),
+  UNIQUE KEY `id_perusahaan` (`id_manufaktur`),
+  UNIQUE KEY `id_pbb` (`id_bahan_baku`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
 CREATE TABLE IF NOT EXISTS `kota` (
-`id_kota` int(11) NOT NULL,
+  `id_kota` int(11) NOT NULL AUTO_INCREMENT,
   `provinsi` varchar(50) NOT NULL,
-  `kota` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+  `kota` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_kota`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=113 ;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id_kota`, `provinsi`, `kota`) VALUES
@@ -485,58 +501,70 @@ INSERT INTO `kota` (`id_kota`, `provinsi`, `kota`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `manufaktur`
+-- Table structure for table `manufaktur`
 --
 
 CREATE TABLE IF NOT EXISTS `manufaktur` (
-`id_manufaktur` int(11) NOT NULL,
+  `id_manufaktur` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
   `email` varchar(40) NOT NULL,
   `bukti` varchar(40) NOT NULL,
   `kategori` varchar(50) DEFAULT NULL,
+  `tipe` varchar(20) NOT NULL,
+  `jumlah` int(100) NOT NULL,
+  `jam` datetime NOT NULL,
   `barang_dibutuhkan` varchar(50) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `kota` varchar(20) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `deskripsi` varchar(2000) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_manufaktur`),
+  UNIQUE KEY `id_kota` (`kota`),
+  UNIQUE KEY `id_kategori_prshn` (`kategori`),
+  UNIQUE KEY `id_kota_2` (`kota`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `manufaktur`
+-- Dumping data for table `manufaktur`
 --
 
-INSERT INTO `manufaktur` (`id_manufaktur`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `kategori`, `barang_dibutuhkan`, `provinsi`, `kota`, `id_user`) VALUES
-(1, 'manufkatur_ini', 'malang', '80', 'manufaktur', '', 'Perkebunan', 'Kelapa Sawit', 'Aceh', 'Banda Aceh', 1);
+INSERT INTO `manufaktur` (`id_manufaktur`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `kategori`, `tipe`, `jumlah`, `jam`, `barang_dibutuhkan`, `provinsi`, `kota`, `deskripsi`, `id_user`) VALUES
+(1, 'manufkatur_ini', 'malang', '80', 'manufaktur', '', 'Perkebunan', 'Perusahaan Besar', 3000, '2017-02-03 08:26:04', 'Kelapa Sawit', 'Aceh', 'Banda Aceh', '', 1),
+(4, 'PT.Nestle', 'Jl.Padang Raya 13', '089631384081', 'asd123@gmail.com', '', 'Pertanian', 'Perusahaan Sedang', 1000, '2017-02-01 03:08:31', 'Padi', 'Aceh', '1', '', 4);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `postingan`
+-- Table structure for table `postingan`
 --
 
 CREATE TABLE IF NOT EXISTS `postingan` (
-`id_post` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(20) NOT NULL,
   `judul` varchar(50) NOT NULL,
   `isi` varchar(200) NOT NULL,
   `gambar` varchar(50) NOT NULL,
   `tanggal` date NOT NULL,
-  `waktu` time(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `waktu` time(6) NOT NULL,
+  PRIMARY KEY (`id_post`),
+  UNIQUE KEY `id_user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `provinsi`
+-- Table structure for table `provinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `provinsi` (
-  `provinsi` varchar(50) NOT NULL
+  `provinsi` varchar(50) NOT NULL,
+  PRIMARY KEY (`provinsi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `provinsi`
+-- Dumping data for table `provinsi`
 --
 
 INSERT INTO `provinsi` (`provinsi`) VALUES
@@ -575,19 +603,20 @@ INSERT INTO `provinsi` (`provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-`id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `konfirmasi` tinyint(1) NOT NULL,
-  `perusahaan` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `perusahaan` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `konfirmasi`, `perusahaan`) VALUES
@@ -599,129 +628,27 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `konfirmasi`, `perusahaan
 (6, 'admin', 'admin', 1, 'admin');
 
 --
--- Indexes for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- Indexes for table `bahan_baku`
---
-ALTER TABLE `bahan_baku`
- ADD PRIMARY KEY (`id_bahan_baku`), ADD UNIQUE KEY `id_kategori_pbb` (`kategori`), ADD UNIQUE KEY `id_kota` (`kota`);
-
---
--- Indexes for table `barang_bahan`
+-- Constraints for table `barang_bahan`
 --
 ALTER TABLE `barang_bahan`
- ADD PRIMARY KEY (`id_bb`), ADD KEY `id_kategori` (`id_kategori`);
+  ADD CONSTRAINT `barang_bahan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Indexes for table `kategori`
---
-ALTER TABLE `kategori`
- ADD PRIMARY KEY (`id_kategori`);
-
---
--- Indexes for table `kerjasama`
+-- Constraints for table `kerjasama`
 --
 ALTER TABLE `kerjasama`
- ADD PRIMARY KEY (`id_kerjasama`), ADD UNIQUE KEY `id_perusahaan` (`id_manufaktur`), ADD UNIQUE KEY `id_pbb` (`id_bahan_baku`);
+  ADD CONSTRAINT `kerjasama_ibfk_1` FOREIGN KEY (`id_manufaktur`) REFERENCES `manufaktur` (`id_manufaktur`),
+  ADD CONSTRAINT `kerjasama_ibfk_2` FOREIGN KEY (`id_bahan_baku`) REFERENCES `bahan_baku` (`id_bahan_baku`);
 
 --
--- Indexes for table `kota`
---
-ALTER TABLE `kota`
- ADD PRIMARY KEY (`id_kota`);
-
---
--- Indexes for table `manufaktur`
---
-ALTER TABLE `manufaktur`
- ADD PRIMARY KEY (`id_manufaktur`), ADD UNIQUE KEY `id_kota` (`kota`), ADD UNIQUE KEY `id_kategori_prshn` (`kategori`), ADD UNIQUE KEY `id_kota_2` (`kota`);
-
---
--- Indexes for table `postingan`
+-- Constraints for table `postingan`
 --
 ALTER TABLE `postingan`
- ADD PRIMARY KEY (`id_post`), ADD UNIQUE KEY `id_user` (`id_user`);
-
---
--- Indexes for table `provinsi`
---
-ALTER TABLE `provinsi`
- ADD PRIMARY KEY (`provinsi`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
- ADD PRIMARY KEY (`id_user`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `bahan_baku`
---
-ALTER TABLE `bahan_baku`
-MODIFY `id_bahan_baku` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `barang_bahan`
---
-ALTER TABLE `barang_bahan`
-MODIFY `id_bb` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=539;
---
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
---
--- AUTO_INCREMENT for table `kerjasama`
---
-ALTER TABLE `kerjasama`
-MODIFY `id_kerjasama` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `kota`
---
-ALTER TABLE `kota`
-MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
---
--- AUTO_INCREMENT for table `manufaktur`
---
-ALTER TABLE `manufaktur`
-MODIFY `id_manufaktur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `postingan`
---
-ALTER TABLE `postingan`
-MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `barang_bahan`
---
-ALTER TABLE `barang_bahan`
-ADD CONSTRAINT `barang_bahan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Ketidakleluasaan untuk tabel `kerjasama`
---
-ALTER TABLE `kerjasama`
-ADD CONSTRAINT `kerjasama_ibfk_1` FOREIGN KEY (`id_manufaktur`) REFERENCES `manufaktur` (`id_manufaktur`),
-ADD CONSTRAINT `kerjasama_ibfk_2` FOREIGN KEY (`id_bahan_baku`) REFERENCES `bahan_baku` (`id_bahan_baku`);
-
---
--- Ketidakleluasaan untuk tabel `postingan`
---
-ALTER TABLE `postingan`
-ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
