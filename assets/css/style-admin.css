@@ -14,9 +14,23 @@
 }
 
 .admin-content{
-  padding-left: 240px;
+  /*padding-left: 240px;*/
+  /*overflow-x: scroll;*/
+  overflow-y: scroll;
+  height: 90%;
 }
 
 .navbar-nav > li > a {
     color: white;
+}
+
+.active{
+  border-right: 4px solid #254690;
+  background-color: #1a1a1a
+}
+
+.sidebar-menu li:hover{
+  background-color: #2a2a2a;
+  border-right: 4px solid #22489c;
+  transition-duration: 0.3s;
 }

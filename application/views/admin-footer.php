@@ -4,7 +4,7 @@
 <script language="Javascript" type="text/javascript" src="<?php echo base_url("assets/js/app.min.js"); ?>"></script>
 
 <script type="text/javascript">
-  
+
   $('#tblData').click(function(){
       $.ajax({
           'data'    : $('#addKateg').serialize(),
@@ -12,6 +12,8 @@
           'url'   : '<?= base_url('admin/tambah_kategori');?>',
           'success' : function(data){
               alert(data);
+              $('#ModalAdd').modal('hide');
+              location.reload();// for reload a page
           },
           'error' : function(err){
             console.log(err.ResponseText);
@@ -98,9 +100,3 @@
         }
       }
 </script>
-
-<footer class="main-footer" style="border-top:1px solid #f0f0f0; padding:4px;">
-  <div class="pull-right hidden-xs">
-    <center><p class="footer-company-name">Sepakat &copy; 2017</p></center>
-  </div>
-</footer>

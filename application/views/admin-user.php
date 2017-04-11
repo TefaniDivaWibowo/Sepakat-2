@@ -1,4 +1,5 @@
-<div class="container-fluid admin-content">
+<div class="content-wrapper admin-content">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-10">
       <h1><i class="fa fa-fw fa-user"></i> User</h1>
@@ -17,9 +18,9 @@
       <th>Jenis Perusahaan</th>
       <th style="width:20%;">Tindakan</th>
     </tr>
-    <?php 
+    <?php
         $no = 0;
-        foreach($user as $u){ 
+        foreach($user as $u){
         $no++;
     ?>
     <tr>
@@ -54,7 +55,7 @@
     </ul>
   </nav>
 </div>
-
+</div>
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -104,24 +105,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
         <button type="button" class="btn btn-primary">Simpan Perubahan</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="ModalDeleteLabels"><i class="fa fa-fw fa-trash-o"></i>Hapus Data</h4>
-      </div>
-      <div class="modal-body">
-        <p>Apakah anda yakin akan menghapus data ini?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
-        <button type="button" class="btn btn-primary" a href="<?= base_url('user/hapus_user/'. $user[$no-1]['id_user']);?>">Hapus Data</button>
       </div>
     </div>
   </div>

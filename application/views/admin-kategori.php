@@ -1,29 +1,5 @@
-<script type="text/javascript">
-      function delete_kategori(id)
-      {
-        if(confirm('Are you sure delete this data?'))
-        {
-          // ajax delete data from database
-            $.ajax({
-              url : "<?php echo base_url('admin/kategori_update/')?>/"+id,
-              type: "POST",
-              dataType: "JSON",
-              success: function(data)
-              {
-
-                 location.reload();
-              },
-              error: function (jqXHR, textStatus, errorThrown)
-              {
-                  alert('Error deleting data');
-              }
-          });
-
-        }
-      }
-</script>
-
-<div class="container-fluid admin-content">
+<div class="content-wrapper admin-content">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-10">
       <h1><i class="fa fa-fw fa-gear"></i> Kategori</h1>
@@ -38,7 +14,7 @@
       <th>No.</th>
       <th>Id_Kategori</th>
       <th>Kategori</th>
-      <th style="width:20%;">Tindakan</th>
+      <th style="width:15%;">Tindakan</th>
     </tr>
     <?php
     $i = 1;
@@ -48,7 +24,7 @@
       <td><?php echo $i; $i++; ?></td>
       <td><?php echo $data->id_kategori?></td>
       <td><?php echo $data->kategori?></td>
-      <td><button class="btn btn-success"  type="button" onclick="edit_kategori(<?php echo $data->id_kategori;?>)"><i class="fa fa-fw fa-pencil-square"></i> Edit</button><button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button" onclick="delete_kategori(<?php echo $data->id_kategori;?>)"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
+      <td><button class="btn btn-success"  type="button" onclick="edit_kategori(<?php echo $data->id_kategori;?>)"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button" onclick="delete_kategori(<?php echo $data->id_kategori;?>)"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
     </tr>
     <?php    } ?>
   </table>
@@ -72,7 +48,12 @@
     </ul>
   </nav>
 </div>
-
+</div>
+<!-- <footer class="main-footer" style="border-top:1px solid #f0f0f0; padding:4px;">
+  <div class="pull-right hidden-xs">
+    <center><p class="footer-company-name">Sepakat &copy; 2017</p></center>
+  </div>
+</footer> -->
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -124,7 +105,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
+<!-- <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -140,5 +121,4 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->

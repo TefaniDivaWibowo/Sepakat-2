@@ -1,4 +1,5 @@
-<div class="container-fluid admin-content">
+<div class="content-wrapper admin-content">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-10">
       <h1><i class="fa fa-fw fa-user"></i> User</h1>
@@ -13,18 +14,18 @@
             <td>No</td>
             <td>Provinsi</td>
             <td>Nama Kota</td>
-            <td colspan="2" align="center">Action</td>
+            <td align="center" width="15%">Action</td>
         </tr>
-    <?php 
+    <?php
         $no = 0;
-        foreach($kota as $u){ 
+        foreach($kota as $u){
         $no++;
     ?>
         <tr>
             <td><?php echo $no; ?></td>
             <td><?php echo $kota[$no-1]['provinsi']; ?></td>
             <td><?php echo $kota[$no-1]['kota']; ?></td>
-            <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td> 
+            <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
         </tr>
     <?php
     }
@@ -50,7 +51,7 @@
     </ul>
   </nav>
 </div>
-
+</div>
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -105,7 +106,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
+<!-- <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,4 +122,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

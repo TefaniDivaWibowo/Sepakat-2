@@ -7,6 +7,21 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/css/style-extra.css"); ?>"/>
 <link rel="stylesheet" href="<?php echo base_url("assets/css/footer.css"); ?>"/>
 <link rel="stylesheet" href="<?php echo base_url("assets/css/summernote.css"); ?>"/>
+<link rel="stylesheet" href="<?= base_url("assets/css_feed/modal.css");?>">
+  
+<script language="Javascript" type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.1.1.min.js"); ?>"></script>
+<script language="Javascript" type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
+<script language="Javascript" type="text/javascript" src="<?php echo base_url("assets/js/summernote.min.js"); ?>"></script>
+  
+<script language="Javascript" type="text/javascript" src="<?=base_url('assets/js_feed/script.js');?>"></script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.7/summernote.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.7/summernote.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
 
 <link rel="" href="<?php echo base_url();?>"/>
 
@@ -97,40 +112,83 @@ function closeNav() {
 <nav id="navigate"class="nav navbar navbar-default navbar-fixed-top">
   <div class="container" style="padding:0;">
     <div class="pull-left">
-      <a class="navbar-brand" href="#"><i class="fa fa-fw fa-2x fa-handshake-o"></i></a>
+      <a class="navbar-brand"><i class="fa fa-fw fa-2x fa-handshake-o"></i></a>
     </div>
-    <div class="pull-right">
-      <a class="navbar-brand" onclick="openNav()"><i class="fa fa-fw fa-2x fa-free-code-camp"></i></a>
-    </div>
+    
+    <?php
+      if($this->session->userdata('status') == "login"){
+        echo "<div class='pull-right'>";
+        echo "<a class='navbar-brand' onclick='openNav()'><i class='fa fa-user fa-2x'></i></a>";
+        echo "</div>";
+      } else {
+        echo "<div class='pull-right'>";
+        echo "<a class='navbar-brand'><i class='fa fa-fw fa-2x fa-handshake-o'></i></a>";
+        echo "</div>";
+      }
+    ?>
     <div class="nav-menu navbar-collapse collapse">
       <ul class="nav" style="display:block;text-align:center;">
 
         <?php
             if($this->session->userdata('status') != "login"){
                 echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
-                echo "<li class=''><a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
-                echo "<li class=''><a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
-                echo "<li class=''><a href='". base_url('Login/') ."'>Login</a></li>";
-            }elseif ($this->session->userdata('tipe_user') == 'manufaktur' && $this->session->userdata('status') == "login") {
-                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
-                echo "<li class=''><a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
+                echo "<li class=''><a href='#PerusahaanMan'>Cari Perusahaan Manufaktur</a></li>";
+                echo "<li class=''><a href='#PerusahaanBan'>Cari Perusahaan Bahan Baku</a></li> ";
+                echo "<li class=''><a href='". base_url('index.php/Login/') ."'>Masuk</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Register') ."'>Daftar</a></li>";
+            }elseif ($this->session->userdata('tipe_user') == 'Manufaktur' && $this->session->userdata('status') == "login") {
+                echo "<li class=''><a href='". base_url('index.php/Feed/perusahaan/') ."'>Feed</a></li>";
+                echo "<li class=''><a href='" . base_url('index.php/penyedia/list_kategori') . "'>Cari Perusahaan Bahan Baku</a></li> ";
+                echo "<li class=''><a href='". base_url('index.php/Perusahaan/profile') ."'>Data Diri</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Perusahaan/notifikasi/') ."'>Notifikasi   ".$this->session->userdata('notif_pen')."</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Login/logout') ."'>Logout</a></li>";
+            }elseif ($this->session->userdata('tipe_user') == 'Bahan Baku' && $this->session->userdata('status') == "login") {
+                echo "<li class=''><a href='". base_url('index.php/Penyedia/isidetail') ."'>Feed</a></li>";
+                echo "<li class=''><a href='" . base_url('index.php/Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li> ";
+                echo "<li class=''><a href='". base_url('index.php/Penyedia/profile/') ."'>Data Diri</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Penyedia/notifikasi/') ."'>Notifikasi   ".$this->session->userdata('notif_pen')."</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Login/logout') ."'>Keluar</a></li>";
+            }else{
+                echo "<li class='active'><a href='". base_url('index.php/Home/') . "'>Beranda</a></li>";
+                echo "<li class=''><a href='" . base_url("index.php/Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
+                echo "<li class=''><a href='" . base_url('index.php/Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
                 echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
-            }elseif ($this->session->userdata('tipe_user') == 'bahan baku' && $this->session->userdata('status') == "login") {
-                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
-                echo "<li class=''><a href='" . base_url('Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li> ";
-                echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
-            } 
+            }
         ?>
 
       </ul>
     </div>
   </div>
 </nav>
+  
+<!--   <?php
+//        echo "<pre>";
+//        print_r($_SESSION);
+//        echo "</pre>";
+
+  ?> -->
 
 <div id="mySidenav" class="sidenav">
  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
- <a href="<?php echo base_url();?>home">Beranda</a>
- <a href="<?php echo base_url();?>perusahaan">Cari Perusahaan</a>
- <a href="<?php echo base_url();?>penyedia">Cari Penyedia</a>
- <a>Login</a>
+ <?php
+     if($this->session->userdata('status') != "login"){
+         echo "<a href='". base_url('Home/') . "'>Beranda</a>";
+         echo "<a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a>";
+         echo "<a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a>";
+         echo "<a href='". base_url('Login/') ."'>Login</a>";
+     }elseif ($this->session->userdata('tipe_user') == 'manufaktur' && $this->session->userdata('status') == "login") {
+         echo " <a href='". base_url('Home/') . "'>Beranda</a></li>";
+         echo "<a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li>";
+         echo "<a href='". base_url('Login/logout') ."'>Logout</a></li>";
+     }elseif ($this->session->userdata('tipe_user') == 'bahan baku' && $this->session->userdata('status') == "login") {
+         echo "<a href='". base_url('Home/') . "'>Beranda</a></li>";
+         echo "<a href='" . base_url('Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li>";
+         echo "<a href='". base_url('Login/logout') ."'>Logout</a></li>";
+     }else{
+         echo "<a href='". base_url('Home/') . "'>Beranda</a>";
+         echo "<a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a>";
+         echo "<a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a>";
+         echo "<a href='". base_url('Login/logout') ."'>Logout</a>";
+     }
+ ?>
 </div>

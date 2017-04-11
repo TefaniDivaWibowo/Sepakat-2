@@ -4,7 +4,14 @@
     function __construct() {
       parent::__construct();
       $this->load->database();
+      $this->load->helper('url');
       $this->load->model('kategori');
+      $this->load->model('model_provinsi');
+      $this->load->model('model_user');
+      $this->load->model('model_manufaktur');
+      $this->load->model('model_kota');
+      $this->load->model('model_barang_bahan');
+      $this->load->model('model_bahan_baku');
     }
 
     public function index(){
@@ -16,9 +23,6 @@
 
     //Kategori
     public function kategori(){
-      $this->load->helper('url');
-      $this->load->model('kategori');
-
       $data['kategori']=$this->kategori->get_all_categories();
       $this->load->view('admin-header');
       $this->load->view('admin-kategori', $data);
@@ -38,7 +42,7 @@
           echo 'Fail';
          }
     }
-    
+
     public function kategori_edit($id){
       $this->load->model('kategori');
       $data = $this->kategori->get_by_id($id);
@@ -104,5 +108,32 @@
       $this->load->view('admin-kota', $data);
       $this->load->view('admin-footer');
     }
+
+    //User
+    public function user(){
+			$data['user'] = $this->model_user->select_data();
+			$this->load->view('admin-header');
+			$this->load->view('admin-user', $data);
+     	$this->load->view('admin-footer');
+		}
+
+    //Manufaktor
+    public function manufaktur(){
+  		$data['manufaktur'] = $this->model_manufaktur->select_data();
+  	  $this->load->view('admin-header');
+  	  $this->load->view('admin-manufaktur', $data);
+  	  $this->load->view('admin-footer');
+    }
+
+    //Bahan Baku
+    public function bahan_baku(){
+  		$this->load->library('form_validation');
+  		$this->load->model('model_bahan_baku');
+
+  		$data['bahan_baku'] = $this->model_bahan_baku->select_data();
+  	    $this->load->view('admin-header');
+  	    $this->load->view('admin-bahan-baku', $data);
+  	    $this->load->view('admin-footer');
+      }
   }
 ?>

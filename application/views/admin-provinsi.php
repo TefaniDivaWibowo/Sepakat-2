@@ -1,4 +1,5 @@
-<div class="container-fluid admin-content">
+<div class="content-wrapper admin-content">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-10">
       <h1><i class="fa fa-fw fa-user"></i> User</h1>
@@ -12,17 +13,17 @@
         <tr>
             <td>No</td>
             <td>Nama provinsi</td>
-            <td colspan="2" align="center">Action</td>
+            <td width="15%" align="center">Action</td>
         </tr>
-        <?php 
+        <?php
           $no = 0;
-          foreach($provinsi as $u){ 
+          foreach($provinsi as $u){
           $no++;
         ?>
         <tr>
             <td><?php echo $no; ?></td>
             <td><?php echo $provinsi[$no-1]['provinsi']; ?></td>
-            <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td> 
+            <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
         </tr>
         <?php
         }
@@ -48,7 +49,7 @@
     </ul>
   </nav>
 </div>
-
+</div>
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -103,7 +104,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
+<!-- <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -119,4 +120,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

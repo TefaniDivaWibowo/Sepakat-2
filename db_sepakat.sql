@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Feb 2017 pada 05.13
+-- Generation Time: 28 Mar 2017 pada 12.13
 -- Versi Server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `bahan_baku` (
 `id_bahan_baku` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
-  `no_telp` int(50) NOT NULL,
+  `no_telp` varchar(50) DEFAULT NULL,
   `email` varchar(40) NOT NULL,
   `bukti` varchar(50) NOT NULL,
   `total_produksi` varchar(50) NOT NULL,
@@ -38,15 +38,19 @@ CREATE TABLE IF NOT EXISTS `bahan_baku` (
   `barang_bahan` varchar(50) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `kota` varchar(20) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `id_user` int(11) DEFAULT NULL,
+  `gambar_latar` varchar(1000) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `bahan_baku`
 --
 
-INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `total_produksi`, `kategori`, `barang_bahan`, `provinsi`, `kota`, `id_user`) VALUES
-(12, 'Next', 'Next', 90, 'Next@gmail.com', '', '800', 'Peternakan', 'Kerbau', 'Aceh', 'Banda Aceh', NULL);
+INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `total_produksi`, `kategori`, `barang_bahan`, `provinsi`, `kota`, `id_user`, `gambar_latar`) VALUES
+(1, '', '', '0', 'stich@gmail.com', '', '', NULL, '', '', NULL, NULL, ''),
+(2, '', '', '0', 'minyak@gmail.com', '', '', NULL, '', '', NULL, NULL, ''),
+(3, '', '', '0', 'tessa@gmail.com', '', '', NULL, '', '', NULL, 5, ''),
+(4, '', '', '0', 'pensil@gmail.com', '', '', NULL, '', '', NULL, 6, '');
 
 -- --------------------------------------------------------
 
@@ -392,12 +396,12 @@ INSERT INTO `kota` (`id_kota`, `provinsi`, `kota`) VALUES
 (19, 'Jakarta', 'Jakarta Utara'),
 (20, 'Jambi', 'Sungai Penuh'),
 (21, 'Jambi', 'Jambi'),
-(22, 'Jawa Barat', 'Bandung'),
+(22, 'Gorontalo', 'Bandung'),
 (23, 'Jawa Barat', 'Bekasi'),
 (24, 'Jawa Barat', 'Bogor'),
 (25, 'Jawa Barat', 'Cimahi'),
-(26, '', 'Cirebon'),
-(27, '', 'Depok'),
+(26, 'Jawa Barat', 'Cirebon'),
+(27, 'Jawa Barat', 'Depok'),
 (28, '', 'Sukabumi'),
 (29, '', 'Tasikmalaya'),
 (30, '', 'Banjar'),
@@ -492,22 +496,26 @@ CREATE TABLE IF NOT EXISTS `manufaktur` (
 `id_manufaktur` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
+  `kota` varchar(20) DEFAULT NULL,
+  `provinsi` varchar(50) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `bukti` varchar(40) NOT NULL,
-  `kategori` varchar(50) DEFAULT NULL,
+  `tipe` varchar(100) NOT NULL,
   `barang_dibutuhkan` varchar(50) NOT NULL,
-  `provinsi` varchar(50) NOT NULL,
-  `kota` varchar(20) DEFAULT NULL,
+  `banyak_kebutuhan` varchar(1000) NOT NULL,
+  `icon` varchar(1000) NOT NULL,
+  `gambar_latar` varchar(100) NOT NULL,
+  `bukti` varchar(40) NOT NULL,
   `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `manufaktur`
 --
 
-INSERT INTO `manufaktur` (`id_manufaktur`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `kategori`, `barang_dibutuhkan`, `provinsi`, `kota`, `id_user`) VALUES
-(1, 'manufkatur_ini', 'malang', '80', 'manufaktur', '', 'Perkebunan', 'Kelapa Sawit', 'Aceh', 'Banda Aceh', 1);
+INSERT INTO `manufaktur` (`id_manufaktur`, `nama`, `alamat`, `kota`, `provinsi`, `no_telp`, `email`, `tipe`, `barang_dibutuhkan`, `banyak_kebutuhan`, `icon`, `gambar_latar`, `bukti`, `id_user`) VALUES
+(1, 'PT Mandiri Sentosa', 'Jln. Danau Ranau G5', 'Denpasar', 'Bali', '089900', 'mandiri@gmail.com', 'Perusahaan Besar', 'Teh', '1000 Kg', 'assets/images/logo/Screenshot_6.png', '', '', 1),
+(2, '', '', NULL, '', '', 'asus@gmail.com', '', '', '', '', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -591,12 +599,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `konfirmasi`, `perusahaan`) VALUES
-(1, 'manufaktur', 'manufaktur', 1, 'manufaktur'),
-(2, 'bahanbaku', 'bahanbaku', 1, 'bahan baku'),
-(3, 'tefani', 'tefani', 1, 'manufaktur'),
-(4, 'roni', 'roni', 1, 'bahan baku'),
-(5, 'baru', 'baru', 0, 'manufaktur'),
-(6, 'admin', 'admin', 1, 'admin');
+(1, 'mandiri@gmail.com', 'mandiri', 0, 'Manufaktur'),
+(2, 'asus@gmail.com', 'asus', 0, 'Manufaktur'),
+(3, 'stich@gmail.com', 'stich', 0, 'Bahan Baku'),
+(4, 'minyak@gmail.com', 'minyak', 0, 'Bahan Baku'),
+(5, 'tessa@gmail.com', 'tessa', 0, 'Bahan Baku'),
+(6, 'pensil@gmail.com', 'pensil', 0, 'Bahan Baku');
 
 --
 -- Indexes for dumped tables
@@ -636,7 +644,7 @@ ALTER TABLE `kota`
 -- Indexes for table `manufaktur`
 --
 ALTER TABLE `manufaktur`
- ADD PRIMARY KEY (`id_manufaktur`), ADD UNIQUE KEY `id_kota` (`kota`), ADD UNIQUE KEY `id_kategori_prshn` (`kategori`), ADD UNIQUE KEY `id_kota_2` (`kota`);
+ ADD PRIMARY KEY (`id_manufaktur`), ADD UNIQUE KEY `id_kota` (`kota`), ADD UNIQUE KEY `id_kota_2` (`kota`);
 
 --
 -- Indexes for table `postingan`
@@ -664,7 +672,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bahan_baku`
 --
 ALTER TABLE `bahan_baku`
-MODIFY `id_bahan_baku` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id_bahan_baku` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `barang_bahan`
 --
@@ -689,7 +697,7 @@ MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
 -- AUTO_INCREMENT for table `manufaktur`
 --
 ALTER TABLE `manufaktur`
-MODIFY `id_manufaktur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_manufaktur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `postingan`
 --
@@ -709,19 +717,6 @@ MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 ALTER TABLE `barang_bahan`
 ADD CONSTRAINT `barang_bahan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Ketidakleluasaan untuk tabel `kerjasama`
---
-ALTER TABLE `kerjasama`
-ADD CONSTRAINT `kerjasama_ibfk_1` FOREIGN KEY (`id_manufaktur`) REFERENCES `manufaktur` (`id_manufaktur`),
-ADD CONSTRAINT `kerjasama_ibfk_2` FOREIGN KEY (`id_bahan_baku`) REFERENCES `bahan_baku` (`id_bahan_baku`);
-
---
--- Ketidakleluasaan untuk tabel `postingan`
---
-ALTER TABLE `postingan`
-ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

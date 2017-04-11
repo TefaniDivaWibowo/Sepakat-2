@@ -124,7 +124,37 @@
       <hr />
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </center>
-    <div id="summernote"></div>
+<!--     <div id="summernote"></div>
+    <input type="text" id="textarea"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.7/summernote.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.7/summernote.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+
+    Editor:
+    <div id="summernote" class="form-control"></div>
+
+    Output:
+    <textarea id="lawsContent" class="form-control"></textarea>
+
+    <script>
+    $(document).ready(function(){
+
+        $("#summernote").summernote(
+            {
+                height: "10em",
+                onChange: function (contents, $editable) {
+                    $("#lawsContent").val(contents);
+                }
+            }
+        );
+
+    });
+    </script>
+    <a href="mailto:someone@yoursite.com">Email Us</a>  
   </div>
 </div>
 

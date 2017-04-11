@@ -13,6 +13,7 @@ Class Model_barang_bahan extends CI_Model {
 		->get();
 		return $barang_bahan->result_array();
 	}
+	
 	function selectSearch($table, $where){
 		$search = $this->db->select('*')
 				 ->from($table)

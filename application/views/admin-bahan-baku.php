@@ -1,4 +1,5 @@
-<div class="container-fluid admin-content">
+<div class="content-wrapper admin-content">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-10">
       <h1><i class="fa fa-fw fa-user"></i> Perusahaan Bahan Baku</h1>
@@ -21,11 +22,11 @@
             <td>Barang yang dihasilkan</td>
             <td>Provinsi</td>
             <td>Kota</td>
-            <td colspan="2">Tindakan</td>
+            <td width="15%">Tindakan</td>
     </tr>
-      <?php 
+      <?php
         $no = 0;
-        foreach($bahan_baku as $u){ 
+        foreach($bahan_baku as $u){
         $no++;
       ?>
         <tr>
@@ -66,7 +67,7 @@
     </ul>
   </nav>
 </div>
-
+</div>
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -111,7 +112,7 @@
           <span>Alamat :</span>
           <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
         </div>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
@@ -150,7 +151,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
+<!-- <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -166,4 +167,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
