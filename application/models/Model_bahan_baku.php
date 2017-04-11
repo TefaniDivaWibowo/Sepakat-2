@@ -5,6 +5,7 @@ Class Model_bahan_baku extends CI_Model {
 		$this->load->database();
 	}
 
+<<<<<<< HEAD
 	function get_id_ban($id_user){
 		$query = $this->db
              ->select('*')
@@ -60,6 +61,10 @@ Class Model_bahan_baku extends CI_Model {
              ->from('bahan_baku')
              ->where('kategori', $id)
              ->get();
+=======
+	function get_bahan(){
+		$query = $this->db->get('bahan_baku');
+>>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
 		return $query->result_array();
 	}
 
@@ -164,6 +169,7 @@ Class Model_bahan_baku extends CI_Model {
       
     }
 
+<<<<<<< HEAD
     public function update_profil($id, $data){
       $this->db->where('id_user', $id)
               ->set($data)
@@ -182,6 +188,9 @@ Class Model_bahan_baku extends CI_Model {
     $kategori = $this->db->query('SELECT * FROM `kategori` LIMIT 6');
     return $kategori->result_array();
   }
+=======
+
+>>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
 }
 
 ?>

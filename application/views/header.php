@@ -153,6 +153,18 @@ function closeNav() {
                 echo "<li class=''><a href='" . base_url("index.php/Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
                 echo "<li class=''><a href='" . base_url('index.php/Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
                 echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
+<<<<<<< HEAD
+=======
+            }elseif ($this->session->userdata('tipe_user') == 'bahan baku' && $this->session->userdata('status') == "login") {
+                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
+                echo "<li class=''><a href='" . base_url('Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li> ";
+                echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
+            }else{
+                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
+                echo "<li class=''><a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
+                echo "<li class=''><a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
+                echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
+>>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
             }
         ?>
 
