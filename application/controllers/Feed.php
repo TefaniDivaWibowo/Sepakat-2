@@ -3,9 +3,29 @@
     public function perusahaan(){
       $this->load->helper('url');
       $this->load->database();
-      
+
+      $this->load->model('model_feed');
+      $data['query'] = $this->model_feed->get_all_feed();
+
+      $id = $this->session->userdata('id_user');
+
+      $row_pen  = $this->model_feed->get_user_pen($id);
+      $row_per  = $this->model_feed->get_user_per($id);
+
+      if ($row_pen = 1){
+        $data['user'] = $this->model_feed->get_user_pen_all($id);
+      } 
+
+      if ($row_per = 1) {
+        $data['user'] = $this->model_feed->get_user_per_all($id);
+      }
+
+      /*echo "<pre>";
+         print_r($data);
+      echo "</pre>";*/
+
       $this->load->view('header');
-      $this->load->view('feed_perusahaan');
+      $this->load->view('feed_perusahaan', $data);
       $this->load->view('footer');
     }
     

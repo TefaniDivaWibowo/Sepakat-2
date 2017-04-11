@@ -140,31 +140,19 @@ function closeNav() {
                 echo "<li class=''><a href='". base_url('index.php/Feed/perusahaan/') ."'>Feed</a></li>";
                 echo "<li class=''><a href='" . base_url('index.php/penyedia/list_kategori') . "'>Cari Perusahaan Bahan Baku</a></li> ";
                 echo "<li class=''><a href='". base_url('index.php/Perusahaan/profile') ."'>Data Diri</a></li>";
-                echo "<li class=''><a href='". base_url('index.php/Perusahaan/notifikasi/') ."'>Notifikasi   ".$this->session->userdata('notif_pen')."</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Perusahaan/notifikasi/') ."'>Notifikasi   ".$this->session->userdata('notif_man')."</a></li>";
                 echo "<li class=''><a href='". base_url('index.php/Login/logout') ."'>Logout</a></li>";
             }elseif ($this->session->userdata('tipe_user') == 'Bahan Baku' && $this->session->userdata('status') == "login") {
                 echo "<li class=''><a href='". base_url('index.php/Penyedia/isidetail') ."'>Feed</a></li>";
                 echo "<li class=''><a href='" . base_url('index.php/Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li> ";
                 echo "<li class=''><a href='". base_url('index.php/Penyedia/profile/') ."'>Data Diri</a></li>";
-                echo "<li class=''><a href='". base_url('index.php/Penyedia/notifikasi/') ."'>Notifikasi   ".$this->session->userdata('notif_pen')."</a></li>";
+                echo "<li class=''><a href='". base_url('index.php/Penyedia/notifikasi/') ."'>Notifikasi   ".$this->session->userdata('notif_ban')."</a></li>";
                 echo "<li class=''><a href='". base_url('index.php/Login/logout') ."'>Keluar</a></li>";
             }else{
                 echo "<li class='active'><a href='". base_url('index.php/Home/') . "'>Beranda</a></li>";
                 echo "<li class=''><a href='" . base_url("index.php/Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
                 echo "<li class=''><a href='" . base_url('index.php/Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
                 echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
-<<<<<<< HEAD
-=======
-            }elseif ($this->session->userdata('tipe_user') == 'bahan baku' && $this->session->userdata('status') == "login") {
-                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
-                echo "<li class=''><a href='" . base_url('Perusahaan/') . "'>Cari Perusahaan Manufaktur</a></li> ";
-                echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
-            }else{
-                echo "<li class='active'><a href='". base_url('Home/') . "'>Beranda</a></li>";
-                echo "<li class=''><a href='" . base_url("Perusahaan/") . "'>Cari Perusahaan Manufaktur</a></li>";
-                echo "<li class=''><a href='" . base_url('Bahan_baku/') . "'>Cari Perusahaan Bahan Baku</a></li> ";
-                echo "<li class=''><a href='". base_url('Login/logout') ."'>Logout</a></li>";
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
             }
         ?>
 

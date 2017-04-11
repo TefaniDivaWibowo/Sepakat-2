@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bahan_baku extends CI_Controller {
 
-<<<<<<< HEAD
 	public function show_detail($id){
 
 	  $this->load->database();
@@ -29,19 +28,6 @@ class Bahan_baku extends CI_Controller {
       $this->load->view('footer');
   }	
 	
-=======
-	public function index(){
-
-	  $this->load->database();
-      $this->load->model('Model_bahan_baku');
-      $data['query']=$this->Model_bahan_baku->get_bahan();
-
-      $this->load->view('header');
-      $this->load->view('penyedia-list', $data);
-      $this->load->view('footer');
-	}	
-
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
  public function tipe()
     {
         $this->load->model('Model_bahan_baku');

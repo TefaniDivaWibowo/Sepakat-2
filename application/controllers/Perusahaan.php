@@ -1,17 +1,9 @@
 <?php
   Class Perusahaan extends CI_Controller{
-<<<<<<< HEAD
     
     function __constuct(){
       parent::__constuct();
       $this->load->database();
-=======
-    public function index(){
-      $this->load->database();
-      $this->load->model('Model_manufaktur');
-      $data['query']=$this->Model_manufaktur->get_peru();
-
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
       $this->load->helper('url');
       $this->load->model('Model_manufaktur');
       $this->load->model('Model_provinsi');
@@ -28,7 +20,6 @@
       $this->load->view('footer');
     }
 
-<<<<<<< HEAD
     /*public function dat_dir(){
       
       $data['perusahaan'] = $this->Model_manufaktur->get_peru_single($_SESSION['id_user']);
@@ -53,9 +44,6 @@
       $id_user          = $this->session->userdata('id_user');
       $data['kueri']    = $this->Model_bahan_baku->get_id_ban($id_user);
 
-=======
-    public function detail(){
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
       $this->load->helper('url');
       $this->load->view('header');
       $this->load->view('perusahaan-detail', $data);
@@ -68,7 +56,6 @@
       $this->load->view('perusahaan-isidetail');
       $this->load->view('footer');
     }
-<<<<<<< HEAD
     
     public function getdetail(){
       $data = array(
@@ -82,11 +69,6 @@
     }
 
     public function tipe(){
-=======
-
-     public function tipe()
-    {
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
         $this->load->model('Model_manufaktur');
         // $ban = implode(',', $_POST['banyak']);
             
@@ -115,7 +97,6 @@
                $this->load->view('perusahaan-list',$data);
                $this->load->view('footer');
             }
-<<<<<<< HEAD
     }
 
     public function profile(){
@@ -317,21 +298,6 @@
                      alert('Sorry, there was an error uploading your file.');</script>";
           }
       }
-=======
-           
-
-    }
-
-    public function tombol()
-     {
-/*echo "<script>
-alert('There are no fields to generate a report');
-</script>";*/
-     $this->tipe();
-        }
-     
-
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
   }
     
 }

@@ -109,6 +109,8 @@
 
         <div class="col-md-4 pull-right"><br>
           <?php
+            $email_sen  = $query[0]['email'];
+
             $kerjasama  = mysqli_query($conn, "SELECT * FROM `kerjasama` WHERE `id_manufaktur` = '$idm' && `id_bahan_baku` = '$id_bahan'");
             $cc = mysqli_num_rows($kerjasama);
 
@@ -120,7 +122,13 @@
               while($dd = mysqli_fetch_assoc($kerjasama)) {
                 $kon = $dd['konfirmasi'];
                   if ($kon == 1) {
-                    echo "<span class='btn btn-primary'>Kirim Pesan</span>";
+            ?>
+
+
+            
+            <a href = "mailto:<?= $email_sen?>"><span class='btn btn-primary'>Kirim Pesan</span></a>
+
+            <?php
                   } elseif ($kon == 0) {
                     echo "<span class='btn btn-primary'>Menunggu konfirmasi</span>";
                   } 
