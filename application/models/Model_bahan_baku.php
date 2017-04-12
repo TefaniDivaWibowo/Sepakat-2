@@ -4,7 +4,11 @@ Class Model_bahan_baku extends CI_Model {
 	function __construct(){
 		$this->load->database();
 	}
+<<<<<<< HEAD
 var $table = 'bahan_baku';
+=======
+
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 	function get_id_ban($id_user){
 		$query = $this->db
              ->select('*')
@@ -35,6 +39,16 @@ var $table = 'bahan_baku';
     return $query->result_array();
   }
 
+  function get_name_ker_man($id){
+    $query = $this->db
+      ->select('*')
+      ->from('manufaktur')
+      ->where('id_manufaktur',$id)
+      ->get();
+      
+    return $query->result_array();
+  }
+
   function get_notif($id){
     $query = $this->db
       ->select('*')
@@ -55,8 +69,17 @@ var $table = 'bahan_baku';
   }
 	
 	function get_bahan($id){
+<<<<<<< HEAD
     $query = $this->db->get('bahan_baku');
     return $query->result_array();
+=======
+		$query = $this->db
+             ->select('*')
+             ->from('bahan_baku')
+             ->where('kategori', $id)
+             ->get();
+		return $query->result_array();
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 	}
 public function get_by_id($id)
   {
@@ -184,6 +207,7 @@ function update_bahan($where,$data){
     $kategori = $this->db->query('SELECT * FROM `kategori` LIMIT 6');
     return $kategori->result_array();
   }
+<<<<<<< HEAD
   public function update_gamlat($id_user, $data){
       $this->db->where('id_user', $id_user)
             ->set($data)
@@ -199,6 +223,14 @@ function update_bahan($where,$data){
   $this->db->where('id_bahan_baku', $id);
   $this->db->delete('bahan_baku'); 
   }
+=======
+
+  public function update_ker_ban($where, $data, $table){
+      $this->db->where($where)
+               ->set($data)
+               ->update($table);
+    }
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 }
 
 ?>

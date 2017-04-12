@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
--- https://www.phpmyadmin.net/
+-- version 4.2.11
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 11, 2017 at 03:42 AM
--- Server version: 10.1.20-MariaDB
--- PHP Version: 7.0.8
+-- Host: 127.0.0.1
+-- Generation Time: 11 Apr 2017 pada 14.22
+-- Versi Server: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,26 +14,27 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `id1060855_sepakat_db`
+-- Database: `dbsepakatbaru`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bahan_baku`
+-- Struktur dari tabel `bahan_baku`
 --
 
-CREATE TABLE `bahan_baku` (
-  `id_bahan_baku` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `bahan_baku` (
+`id_bahan_baku` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `no_telp` varchar(50) DEFAULT NULL,
   `email` varchar(40) NOT NULL,
   `bukti` varchar(50) NOT NULL,
   `total_produksi` varchar(50) NOT NULL,
+  `tipe` varchar(50) NOT NULL,
   `kategori` varchar(50) NOT NULL,
   `barang_bahan` varchar(50) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
@@ -41,37 +42,36 @@ CREATE TABLE `bahan_baku` (
   `icon` varchar(1000) NOT NULL,
   `gambar_latar` varchar(1000) NOT NULL,
   `deskripsi` varchar(10000) NOT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `tipe` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_user` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bahan_baku`
+-- Dumping data untuk tabel `bahan_baku`
 --
 
-INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `total_produksi`, `kategori`, `barang_bahan`, `provinsi`, `kota`, `icon`, `gambar_latar`, `deskripsi`, `id_user`, `tipe`) VALUES
-(2, 'PT. SepakatBan', 'Jln. Danau Kerinci A5', '089990999999', 'tefnder@gmail.com', '', '10000', '1', 'Kelapa Sawit', 'Aceh', 'Banda Aceh', '', '', 'We are all connected; To each other, biologically. To the earth, chemically. To the rest of the universe atomically.\r\nThe regret on our side is, they used to say years ago, we are reading about you in science class. Now they say, we are reading about you in history class.\r\nWe have an infinite amount to learn both from nature and from each other\r\nThe path of a cosmonaut is not an easy, triumphant march to glory. You have to get to know the meaning not just of joy but also of grief, before being allowed in the spacecraft cabin.\r\nThe Earth was small, light blue, and so touchingly alone, our home that must be defended like a holy relic. The Earth was absolutely round. I believe I never knew what the word round meant until I saw Earth from space.', 24, ''),
-(3, 'PT Tyas Decor', 'Jln. Danau Ranau Sawojajar', '08234567890', 'intisetianingtyas@gmail.com', '', '10000', '1', 'Teh', 'Aceh', 'Meulaboh', '', '', 'Bonbon caramels oat cake candy tart carrot cake. Gummi bears cupcake pastry cheesecake cake caramels muffin. Gummies chupa chups caramels gummies chocolate cake danish candy. Halvah topping icing brownie sugar plum danish.\r\nDragée icing gingerbread brownie candy candy canes tart biscuit lemon drops. Gummies oat cake cheesecake. Liquorice topping jelly-o lollipop oat cake. Liquorice pie icing.\r\nGummi bears toffee lollipop pastry biscuit toffee powder caramels. Cotton candy jelly beans tootsie roll sweet roll. Jelly beans danish tootsie roll dragée sweet macaroon.', 27, ''),
-(4, 'PT Tyas Wedding Organizer', '', NULL, 'intisetian@yahoo.com', '', '', '', '', '', '', '', '', '', 28, ''),
-(5, 'Fikri Izzudin', 'Jln. Surakarta No. 908', '087790890878', 'mbahkoe.pendekar@gmail.com', '', '200', '2', 'Kerbau', 'Banten', 'Cilegon', '', '', 'Bonbon caramels oat cake candy tart carrot cake. Gummi bears cupcake pastry cheesecake cake caramels muffin. Gummies chupa chups caramels gummies chocolate cake danish candy. Halvah topping icing brownie sugar plum danish.\r\nDragée icing gingerbread brownie candy candy canes tart biscuit lemon drops. Gummies oat cake cheesecake. Liquorice topping jelly-o lollipop oat cake. Liquorice pie icing.\r\nGummi bears toffee lollipop pastry biscuit toffee powder caramels. Cotton candy jelly beans tootsie roll sweet roll. Jelly beans danish tootsie roll dragée sweet macaroon.', 31, ''),
-(6, 'Ahmad Syahroni', 'Jln. Danau Toba', '087700890909', 'karepmuron@gmail.com', '', '400', '2', 'Sapi Potong', 'Bali', 'Denpasar', '', '', 'Oat cake danish jujubes cotton candy. Jelly-o topping caramels biscuit apple pie chocolate bar croissant toffee candy canes. Gummi bears jelly-o apple pie I love I love.\r\nMacaroon liquorice candy canes candy canes. Cotton candy pastry gummi bears lemon drops I love gingerbread cookie. Halvah candy jelly-o tiramisu bonbon. Toffee jelly beans ice cream chocolate cake dragée apple pie muffin wafer carrot cake.', 32, ''),
-(7, 'Ahmad Roni 2', 'Jln. Danau Tambingan', '086709808079', 'ahmadsyahroni518@gmail.com', '', '400', '3', 'Rumput Laut', 'Jawa Barat', 'Cilegon', '', '', 'Cupcake ipsum dolor sit amet. Lollipop pudding cotton candy. Gummi bears cupcake chupa chups dessert apple pie. Brownie dessert chocolate cake gummi bears gummies gingerbread bonbon powder', 33, ''),
-(8, 'Ahmad Syah 3', 'Sawojajar Malang', '08909089768800', 'kpiekmobasd123@gmail.com', '', '500', '3', 'Bandeng', 'Bangka Belitung', 'Belitung', '', '', 'Cupcake ipsum dolor sit amet. Lollipop pudding cotton candy. Gummi bears cupcake chupa chups dessert apple pie. Brownie dessert chocolate cake gummi bears gummies gingerbread bonbon powder', 34, '');
+INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama`, `alamat`, `no_telp`, `email`, `bukti`, `total_produksi`, `tipe`, `kategori`, `barang_bahan`, `provinsi`, `kota`, `icon`, `gambar_latar`, `deskripsi`, `id_user`) VALUES
+(2, 'PT. SepakatBan', 'Jln. Danau Kerinci A5', '089990999999', 'tefnder@gmail.com', '', '10000', '', '1', 'Kelapa Sawit', 'Aceh', 'Banda Aceh', 'assets/images/logo/f9.jpg', '', 'We are all connected; To each other, biologically. To the earth, chemically. To the rest of the universe atomically.\r\nThe regret on our side is, they used to say years ago, we are reading about you in science class. Now they say, we are reading about you in history class.\r\nWe have an infinite amount to learn both from nature and from each other\r\nThe path of a cosmonaut is not an easy, triumphant march to glory. You have to get to know the meaning not just of joy but also of grief, before being allowed in the spacecraft cabin.\r\nThe Earth was small, light blue, and so touchingly alone, our home that must be defended like a holy relic. The Earth was absolutely round. I believe I never knew what the word round meant until I saw Earth from space.', 24),
+(3, 'PT Tyas Decor', 'Jln. Danau Ranau Sawojajar', '08234567890', 'intisetianingtyas@gmail.com', '', '10000', '', '1', 'Teh', 'Aceh', 'Meulaboh', 'assets/images/logo/f7.jpg', '', 'Bonbon caramels oat cake candy tart carrot cake. Gummi bears cupcake pastry cheesecake cake caramels muffin. Gummies chupa chups caramels gummies chocolate cake danish candy. Halvah topping icing brownie sugar plum danish.\r\nDragée icing gingerbread brownie candy candy canes tart biscuit lemon drops. Gummies oat cake cheesecake. Liquorice topping jelly-o lollipop oat cake. Liquorice pie icing.\r\nGummi bears toffee lollipop pastry biscuit toffee powder caramels. Cotton candy jelly beans tootsie roll sweet roll. Jelly beans danish tootsie roll dragée sweet macaroon.', 27),
+(4, 'PT Tyas Wedding Organizer', '', NULL, 'intisetian@yahoo.com', '', '', '', '', '', '', '', '', '', '', 28),
+(5, 'Fikri Izzudin', 'Jln. Surakarta No. 908', '087790890878', 'mbahkoe.pendekar@gmail.com', '', '200', '', '2', 'Kerbau', 'Banten', 'Cilegon', 'assets/images/logo/f11.jpg', '', 'Bonbon caramels oat cake candy tart carrot cake. Gummi bears cupcake pastry cheesecake cake caramels muffin. Gummies chupa chups caramels gummies chocolate cake danish candy. Halvah topping icing brownie sugar plum danish.\r\nDragée icing gingerbread brownie candy candy canes tart biscuit lemon drops. Gummies oat cake cheesecake. Liquorice topping jelly-o lollipop oat cake. Liquorice pie icing.\r\nGummi bears toffee lollipop pastry biscuit toffee powder caramels. Cotton candy jelly beans tootsie roll sweet roll. Jelly beans danish tootsie roll dragée sweet macaroon.', 31),
+(6, 'Ahmad Syahroni', 'Jln. Danau Toba', '087700890909', 'karepmuron@gmail.com', '', '400', '', '2', 'Sapi Potong', 'Bali', 'Denpasar', 'assets/images/logo/Screenshot_6.png', '', 'Oat cake danish jujubes cotton candy. Jelly-o topping caramels biscuit apple pie chocolate bar croissant toffee candy canes. Gummi bears jelly-o apple pie I love I love.\r\nMacaroon liquorice candy canes candy canes. Cotton candy pastry gummi bears lemon drops I love gingerbread cookie. Halvah candy jelly-o tiramisu bonbon. Toffee jelly beans ice cream chocolate cake dragée apple pie muffin wafer carrot cake.', 32),
+(7, 'Ahmad Roni 2', 'Jln. Danau Tambingan', '086709808079', 'ahmadsyahroni518@gmail.com', '', '400', '', '3', 'Rumput Laut', 'Jawa Barat', 'Cilegon', 'assets/images/logo/Material3.jpg', '', 'Cupcake ipsum dolor sit amet. Lollipop pudding cotton candy. Gummi bears cupcake chupa chups dessert apple pie. Brownie dessert chocolate cake gummi bears gummies gingerbread bonbon powder', 33),
+(8, 'Ahmad Syah 3', 'Sawojajar Malang', '08909089768800', 'kpiekmobasd123@gmail.com', '', '500', '', '3', 'Bandeng', 'Bangka Belitung', 'Belitung', 'assets/images/logo/f7.jpg', '', 'Cupcake ipsum dolor sit amet. Lollipop pudding cotton candy. Gummi bears cupcake chupa chups dessert apple pie. Brownie dessert chocolate cake gummi bears gummies gingerbread bonbon powder', 34);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang_bahan`
+-- Struktur dari tabel `barang_bahan`
 --
 
-CREATE TABLE `barang_bahan` (
-  `id_bb` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `barang_bahan` (
+`id_bb` int(11) NOT NULL,
   `nama_bb` varchar(50) NOT NULL,
   `id_kategori` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=539 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `barang_bahan`
+-- Dumping data untuk tabel `barang_bahan`
 --
 
 INSERT INTO `barang_bahan` (`id_bb`, `nama_bb`, `id_kategori`) VALUES
@@ -285,18 +285,18 @@ INSERT INTO `barang_bahan` (`id_bb`, `nama_bb`, `id_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
-CREATE TABLE `kategori` (
-  `id_kategori` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `kategori` (
+`id_kategori` int(11) NOT NULL,
   `kategori` varchar(50) NOT NULL,
   `icon` varchar(1000) NOT NULL,
   `kotak` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`, `icon`, `kotak`) VALUES
@@ -346,37 +346,39 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`, `icon`, `kotak`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kerjasama`
+-- Struktur dari tabel `kerjasama`
 --
 
-CREATE TABLE `kerjasama` (
-  `id_kerjasama` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `kerjasama` (
+`id_kerjasama` int(11) NOT NULL,
   `id_manufaktur` int(11) NOT NULL,
   `id_bahan_baku` int(11) NOT NULL,
-  `konfirmasi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `konfirmasi` text NOT NULL,
+  `Pengirim` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kerjasama`
+-- Dumping data untuk tabel `kerjasama`
 --
 
-INSERT INTO `kerjasama` (`id_kerjasama`, `id_manufaktur`, `id_bahan_baku`, `konfirmasi`) VALUES
-(4, 12, 2, '0');
+INSERT INTO `kerjasama` (`id_kerjasama`, `id_manufaktur`, `id_bahan_baku`, `konfirmasi`, `Pengirim`) VALUES
+(4, 12, 2, '0', 'Manufaktur'),
+(8, 12, 7, '0', 'Manufaktur');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kota`
+-- Struktur dari tabel `kota`
 --
 
-CREATE TABLE `kota` (
-  `id_kota` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `kota` (
+`id_kota` int(11) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `kota` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kota`
+-- Dumping data untuk tabel `kota`
 --
 
 INSERT INTO `kota` (`id_kota`, `provinsi`, `kota`) VALUES
@@ -494,11 +496,11 @@ INSERT INTO `kota` (`id_kota`, `provinsi`, `kota`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manufaktur`
+-- Struktur dari tabel `manufaktur`
 --
 
-CREATE TABLE `manufaktur` (
-  `id_manufaktur` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `manufaktur` (
+`id_manufaktur` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
@@ -513,54 +515,54 @@ CREATE TABLE `manufaktur` (
   `gambar_latar` varchar(100) NOT NULL,
   `bukti` varchar(40) NOT NULL,
   `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `manufaktur`
+-- Dumping data untuk tabel `manufaktur`
 --
 
 INSERT INTO `manufaktur` (`id_manufaktur`, `nama`, `alamat`, `provinsi`, `kota`, `no_telp`, `email`, `tipe`, `deskripsi`, `barang_dibutuhkan`, `banyak_kebutuhan`, `icon`, `gambar_latar`, `bukti`, `id_user`) VALUES
 (12, 'PT SepakatMan', 'Jln. Danau Kerinci A5', 'Bali', 'Denpasar', '081908678898', 'tefani.diva@gmail.com', 'Perusahaan Sedang', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Semangat 86', '10000', 'assets/images/logo/Screenshot_6.png', 'assets/images/gambarlatar/halo.jpg', '', 21),
 (13, 'PT Aqua ', '', '', NULL, '', 'tefanidivadiva@yahoo.co.id', '', '', '', '', '', '', '', 25),
-(14, 'PT Tia Cetak', 'Jln. Panjahitan 28', 'Bali', 'Denpasar', '087909808707', 'intisetian@gmail.com', 'Perusahaan Sedang', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Kayu', '10000', '', '', '', 26),
+(14, 'PT Tia Cetak', 'Jln. Panjahitan 28', 'Bali', 'Denpasar', '087909808707', 'intisetian@gmail.com', 'Perusahaan Sedang', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Kayu', '10000', 'assets/images/logo/f7.jpg', '', '', 26),
 (15, 'Veloz Creative', 'This Street on That Road on The Other City', 'Aceh', 'Banda Aceh', '082299999999', 'muhammad.p.widodo@gmail.com', 'Perusahaan Besar', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Besi Titanium', '2000', 'assets/images/logo/Material3.jpg', '', '', 29),
-(16, 'Ahmad Ron 4', 'Jln. Kedungkandang 10', 'Jawa Barat', 'Cilegon', '081908809709', 'ahmad_syahroni_23rpl@student.smktelkom-m', 'Perusahaan Besar', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Cengkeh', '500', '', '', '', 35),
-(17, 'Tefani Diva', 'Jln. Sumber Gempol', 'Bandung', 'Bandung', '086908706809', 'tefani_wibowo_23rpl@student.smktelkom-ml', 'Perusahaan Besar', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Batu Bara', '8000', '', '', '', 36);
+(16, 'Ahmad Ron 4', 'Jln. Kedungkandang 10', 'Jawa Barat', 'Cilegon', '081908809709', 'ahmad_syahroni_23rpl@student.smktelkom-m', 'Perusahaan Besar', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Cengkeh', '500', 'assets/images/logo/f9.jpg', '', '', 35),
+(17, 'Tefani Diva', 'Jln. Sumber Gempol', 'Bandung', 'Bandung', '086908706809', 'tefani_wibowo_23rpl@student.smktelkom-ml', 'Perusahaan Besar', 'Apple pie pie toffee lemon drops cupcake tart marzipan candy. Tart chocolate bar chocolate bar candy cotton candy. Carrot cake candy canes jujubes cupcake cupcake sugar plum.\r\nDessert lollipop sesame snaps muffin jelly-o. Halvah gummi bears jujubes pastry. Marzipan chocolate bar cheesecake jelly-o halvah jelly-o.\r\nMacaroon jelly biscuit bonbon halvah macaroon biscuit biscuit gingerbread. Pie carrot cake powder macaroon. Chocolate bar marzipan tootsie roll chocolate cake brownie', 'Batu Bara', '8000', 'assets/images/logo/f11.jpg', '', '', 36);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `postingan`
+-- Struktur dari tabel `postingan`
 --
 
-CREATE TABLE `postingan` (
-  `id_post` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `postingan` (
+`id_post` int(11) NOT NULL,
   `id_user` varchar(50) NOT NULL,
   `isi` varchar(10000) NOT NULL,
   `gambar` varchar(50) NOT NULL,
   `tanggal` date NOT NULL,
   `waktu` time(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `postingan`
+-- Dumping data untuk tabel `postingan`
 --
 
 INSERT INTO `postingan` (`id_post`, `id_user`, `isi`, `gambar`, `tanggal`, `waktu`) VALUES
-(2, '21', '<p class=\"paragraph ng-attr-widget\"><span class=\"ng-directive ng-binding\">Powder\r\n chupa chups chocolate bar cake chupa chups fruitcake gummi bears. Bear \r\nclaw donut macaroon tart liquorice caramels sweet roll soufflé. Bear \r\nclaw marshmallow dessert jujubes cake chupa chups.</span></p><p class=\"paragraph ng-attr-widget\"><span class=\"ng-directive ng-binding\">Croissant\r\n croissant danish sweet roll caramels. Chupa chups halvah icing \r\nchocolate cake jelly. Caramels wafer muffin. Chocolate danish apple pie \r\ndragée.</span></p><span class=\"ng-directive ng-binding\">Danish\r\n sweet roll macaroon. Fruitcake gummi bears sugar plum. Soufflé candy \r\ncanes pastry apple pie wafer. Sweet chocolate cake cheesecake muffin \r\ntiramisu cake</span>', 'assets/images/posting/hola.jpg', '2017-04-11', '12:13:14.000000');
+(2, '21', '<p class="paragraph ng-attr-widget"><span class="ng-directive ng-binding">Powder\r\n chupa chups chocolate bar cake chupa chups fruitcake gummi bears. Bear \r\nclaw donut macaroon tart liquorice caramels sweet roll soufflé. Bear \r\nclaw marshmallow dessert jujubes cake chupa chups.</span></p><p class="paragraph ng-attr-widget"><span class="ng-directive ng-binding">Croissant\r\n croissant danish sweet roll caramels. Chupa chups halvah icing \r\nchocolate cake jelly. Caramels wafer muffin. Chocolate danish apple pie \r\ndragée.</span></p><span class="ng-directive ng-binding">Danish\r\n sweet roll macaroon. Fruitcake gummi bears sugar plum. Soufflé candy \r\ncanes pastry apple pie wafer. Sweet chocolate cake cheesecake muffin \r\ntiramisu cake</span>', 'assets/images/posting/hola.jpg', '2017-04-11', '12:13:14.000000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provinsi`
+-- Struktur dari tabel `provinsi`
 --
 
-CREATE TABLE `provinsi` (
+CREATE TABLE IF NOT EXISTS `provinsi` (
   `provinsi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `provinsi`
+-- Dumping data untuk tabel `provinsi`
 --
 
 INSERT INTO `provinsi` (`provinsi`) VALUES
@@ -599,19 +601,19 @@ INSERT INTO `provinsi` (`provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+`id_user` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `konfirmasi` varchar(100) NOT NULL,
   `perusahaan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `konfirmasi`, `perusahaan`) VALUES
@@ -638,56 +640,55 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `konfirmasi`, `perusahaan
 -- Indexes for table `bahan_baku`
 --
 ALTER TABLE `bahan_baku`
-  ADD PRIMARY KEY (`id_bahan_baku`);
+ ADD PRIMARY KEY (`id_bahan_baku`);
 
 --
 -- Indexes for table `barang_bahan`
 --
 ALTER TABLE `barang_bahan`
-  ADD PRIMARY KEY (`id_bb`),
-  ADD KEY `id_kategori` (`id_kategori`);
+ ADD PRIMARY KEY (`id_bb`), ADD KEY `id_kategori` (`id_kategori`);
 
 --
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
+ ADD PRIMARY KEY (`id_kategori`);
 
 --
 -- Indexes for table `kerjasama`
 --
 ALTER TABLE `kerjasama`
-  ADD PRIMARY KEY (`id_kerjasama`);
+ ADD PRIMARY KEY (`id_kerjasama`);
 
 --
 -- Indexes for table `kota`
 --
 ALTER TABLE `kota`
-  ADD PRIMARY KEY (`id_kota`);
+ ADD PRIMARY KEY (`id_kota`);
 
 --
 -- Indexes for table `manufaktur`
 --
 ALTER TABLE `manufaktur`
-  ADD PRIMARY KEY (`id_manufaktur`);
+ ADD PRIMARY KEY (`id_manufaktur`);
 
 --
 -- Indexes for table `postingan`
 --
 ALTER TABLE `postingan`
-  ADD PRIMARY KEY (`id_post`);
+ ADD PRIMARY KEY (`id_post`);
 
 --
 -- Indexes for table `provinsi`
 --
 ALTER TABLE `provinsi`
-  ADD PRIMARY KEY (`provinsi`);
+ ADD PRIMARY KEY (`provinsi`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+ ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -697,51 +698,51 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bahan_baku`
 --
 ALTER TABLE `bahan_baku`
-  MODIFY `id_bahan_baku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+MODIFY `id_bahan_baku` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `barang_bahan`
 --
 ALTER TABLE `barang_bahan`
-  MODIFY `id_bb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=539;
+MODIFY `id_bb` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=539;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `kerjasama`
 --
 ALTER TABLE `kerjasama`
-  MODIFY `id_kerjasama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `id_kerjasama` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
-  MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
 --
 -- AUTO_INCREMENT for table `manufaktur`
 --
 ALTER TABLE `manufaktur`
-  MODIFY `id_manufaktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+MODIFY `id_manufaktur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `postingan`
 --
 ALTER TABLE `postingan`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `barang_bahan`
+-- Ketidakleluasaan untuk tabel `barang_bahan`
 --
 ALTER TABLE `barang_bahan`
-  ADD CONSTRAINT `barang_bahan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ADD CONSTRAINT `barang_bahan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

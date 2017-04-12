@@ -53,11 +53,11 @@
 				);
 
 			$q  	= $this->model_login->select($data, 'user');
-			
-// 			echo "<pre>";
-// 			print_r($q);
-// 			echo "</pre>";
-
+			/*
+			echo "<pre>";
+			print_r($q);
+			echo "</pre>";
+*/
 			if(null !== $q){
 // 				$this->session->set_userdata('tipe_user', $q['perusahaan']);
 // 				$this->session->set_userdata('id_user', $q['id_user']);
@@ -68,11 +68,12 @@
 				$this->load->model('Model_manufaktur');
 				$this->load->model('Model_user');
 
-				$id_bahan_baku = $this->Model_user->get_id_bahan_baku($q['id_user']);
-				$notif = $this->Model_bahan_baku->get_notif($id_bahan_baku[0]['id_bahan_baku']);
+				$id_bahan_baku 	= $this->Model_user->get_id_bahan_baku($q['id_user']);
+				$notif_ban 		= $this->Model_bahan_baku->get_notif($id_bahan_baku['id_bahan_baku']);
+				$nama_man['query']		= $this->Model_bahan_baku->get_name_ker_man($id_bahan_baku['id_manufaktur']);
 
-				$id_manufaktur = $this->Model_user->get_id_manufaktur($q['id_user']);
-				$notif = $this->Model_bahan_baku->get_notif($id_manufaktur[0]['id_manufaktur']);
+				$id_manufaktur 	= $this->Model_user->get_id_manufaktur($q['id_user']);
+				$notif_man 		= $this->Model_bahan_baku->get_notif($id_manufaktur[0]['id_manufaktur']);
 
 				$array = array(
 					'tipe_user' 		=> $q['perusahaan'],
@@ -80,11 +81,12 @@
 					'konfirmasi' 		=> $q['konfirmasi'],
 					'username' 			=> $q['username'],
 					'status' 			=> 'login',
-					'notif_pen'			=> $notif,
+					'id_bahan_baku'		=> $id_bahan_baku['id_bahan_baku'],
+					'notif_ban'			=> $notif_ban,
+					'notif_man'			=> $notif_man,
+					'ker_man'			=> $id_bahan_baku['id_manufaktur']
 				);
 
-
-				
 				$this->session->set_userdata($array);
 				
 				/*echo "<pre>";

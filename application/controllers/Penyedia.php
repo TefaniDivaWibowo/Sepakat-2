@@ -216,6 +216,40 @@ Class Penyedia extends CI_Controller{
 
 		redirect('bahan_baku/showmore_detail/'.$id);
 	}
+
+	public function notifikasi(){
+		$this->load->model('model_bahan_baku');
+
+		$id_man 	= $this->session->userdata('ker_man');
+		$id 		= $this->session->userdata('id_user');
+
+		/*echo "<pre>";
+				print_r($this->session->userdata());
+		echo "</pre>";*/
+
+		$data['query'] = $this->model_bahan_baku->get_name_ker_man($id_man);
+
+		$this->load->view('notifikasi', $data);
+
+		/*echo "<pre>";
+				print_r($data);
+		echo "</pre>";*/
+	}
+
+	public function ker_set($id_ban){
+
+		$data = array(
+			'konfirmasi' 	=> 1
+		);
+		$where = array(
+			'id_bahan_baku'	=> $id_ban,
+			'konfirmasi'	=> 0
+		);
+
+		$this->load->model('model_bahan_baku');
+		$this->model_bahan_baku->update_ker_ban($where, $data, 'kerjasama');
+		redirect('index.php/penyedia/profile');
+	}
 }
 
 ?>
