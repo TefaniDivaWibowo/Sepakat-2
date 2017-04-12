@@ -22,10 +22,11 @@
         $no++;
       ?>
         <tr>
+        <input type="hidden" name="idbar" id="idbar" class="form-control" value="<?php echo $barang_bahan[$no-1]['id_bb']; ?>" />
             <td><?php echo $no; ?></td>
             <td><?php echo $barang_bahan[$no-1]['nama_bb']; ?></td>
             <td><?php echo $barang_bahan[$no-1]['kategori']; ?></td>
-            <td><button align="center" class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
+            <td><button align="center" class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button" onclick="edit_bar(<?php echo $u['id_bb'];?>)"><i class="fa fa-fw fa-pencil-square"></i> Edit</button><a href="del_bar/<?php echo $barang_bahan[$no-1]['id_bb']; ?>" onclick="return confirmDelete();"><button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></a></td>
         </tr>
         <?php
         }
@@ -59,82 +60,62 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ModalAddLabel"><i class="fa fa-fw fa-plus-circle"></i>Tambah Data Baru</h4>
       </div>
+      <form method="POST" action="<?php echo base_url(); ?>Admin/insert_barang">
       <div class="modal-body">
         <div class="form-group">
-          <span>Nama :</span>
-          <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
+          <span>Nama Barang :</span>
+          <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Barang" />
         </div>
         <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
+          <span>Kategori :</span>
+          <input type="text" name="kategori" id="kategori" class="form-control" placeholder="Kategori" />
         </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <span>Alamat :</span>
-          <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
-        </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
-        <button type="button" class="btn btn-primary">Tambahkan Data</button>
+     <input type="submit" name="submit" class="btn bg-red waves-effect" value="Tambah">
       </div>
+      </form>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditLabel">
+<div class="modal fade" id="ModalEdit3" tabindex="-1" role="dialog" aria-labelledby="ModalEditLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ModalEditLabel"><i class="fa fa-fw fa-pencil-square"></i>Sunting Data</h4>
       </div>
+      <form method="POST" action="" id="edBar">
       <div class="modal-body">
         <div class="form-group">
-          <span>ID User :</span>
-          <input disabled type="text" name="iduser" id="iduser" class="form-control" placeholder="ID User" value="2" />
+          <span>ID Barang :</span>
+          <input disabled type="text" name="idbarf" id="idbarf" class="form-control" placeholder="ID User" value="2" />
+          <input type="text" name="idbar">
         </div>
         <div class="form-group">
-          <span>Username :</span>
-          <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="moklet"/>
+          <span>Nama Barang :</span>
+          <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Barang" />
         </div>
         <div class="form-group">
-          <span>Password :</span>
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="fewfwe"/>
+          <span>Kategori :</span>
+          <input type="text" name="kategori" id="kategori" class="form-control" placeholder="Kategori" />
         </div>
       </div>
+      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
-        <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+        <button type="button" onclick="savebar()" class="btn btn-primary">Simpan Perubahan</button>
       </div>
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this data?');
+    }
+</script>
 <!-- <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

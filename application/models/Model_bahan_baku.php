@@ -4,7 +4,11 @@ Class Model_bahan_baku extends CI_Model {
 	function __construct(){
 		$this->load->database();
 	}
+<<<<<<< HEAD
+var $table = 'bahan_baku';
+=======
 
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 	function get_id_ban($id_user){
 		$query = $this->db
              ->select('*')
@@ -66,22 +70,30 @@ Class Model_bahan_baku extends CI_Model {
   }
 
 	function get_bahan($id){
+<<<<<<< HEAD
+    $query = $this->db->get('bahan_baku');
+    return $query->result_array();
+=======
 		$query = $this->db
              ->select('*')
              ->from('bahan_baku')
              ->where('kategori', $id)
              ->get();
 		return $query->result_array();
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 	}
+public function get_by_id($id)
+  {
+    $this->db->from($this->table);
+    $this->db->where('id_bahan_baku',$id);
+    $query = $this->db->get();
 
+    return $query->row();
+  }
 	function select_data(){
-		$bahan_baku = $this->db
-		->select('id_bahan_baku, nama, alamat, no_telp, email, bukti, total_produksi, kategori.kategori, barang_bahan, bahan_baku.provinsi, kota.kota, id_user')
-		->from('bahan_baku')
-		->join('kategori', 'kategori.kategori = bahan_baku.kategori')
-		->join('kota', 'kota.kota = bahan_baku.kota')
-		->get();
-		return $bahan_baku->result_array();
+		$query= $this->db->query('SELECT * FROM  `bahan_baku` 
+    WHERE nama IS NOT NULL and alamat IS NOT NULL and no_telp IS NOT NULL and email IS NOT NULL and total_produksi IS NOT NULL and kategori IS NOT NULL and barang_bahan IS NOT NULL and provinsi IS NOT NULL and kota IS NOT NULL');
+    return $query->result_array();
 	}
 
 	function tambah_bahan_baku($data){
@@ -106,7 +118,10 @@ Class Model_bahan_baku extends CI_Model {
     $this->db->where($where);
     $this->db->update($table,$data);
   }
-
+function update_bahan($where,$data){
+    $this->db->where($where);
+    $this->db->update('bahan_baku',$data);
+  }
   function update_ban($setdata, $where){
     $query = $this->db->query("UPDATE `tampil` SET `sell_kursi_studio`= '$setdata' WHERE `id_tampil`='$where'");
     return $query;
@@ -193,12 +208,30 @@ Class Model_bahan_baku extends CI_Model {
     $kategori = $this->db->query('SELECT * FROM `kategori` LIMIT 6');
     return $kategori->result_array();
   }
+<<<<<<< HEAD
+  public function update_gamlat($id_user, $data){
+      $this->db->where('id_user', $id_user)
+            ->set($data)
+            ->update('bahan_baku');
+    }
+    function tambahbahan($data1){
+  
+  $this->db->insert('bahan_baku', $data1);
+  
+  }
+  function delete_row($id)
+  {
+  $this->db->where('id_bahan_baku', $id);
+  $this->db->delete('bahan_baku'); 
+  }
+=======
 
   public function update_ker_ban($where, $data, $table){
       $this->db->where($where)
                ->set($data)
                ->update($table);
     }
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 }
 
 ?>

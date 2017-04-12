@@ -5,6 +5,7 @@ Class Model_manufaktur extends CI_Model {
   function __construct(){
     $this->load->database();
   }
+  var $table = 'manufaktur';
 
   function get_peru_all($id){
       $query = $this->db->select('*')
@@ -15,7 +16,7 @@ Class Model_manufaktur extends CI_Model {
   }
 
   function get_peru(){
-    $query = $this->db->query("SELECT * FROM `manufaktur` WHERE `kota` IS NOT NULL");
+    $query = $this->db->get('manufaktur');
     return $query->result_array();
   }
 
@@ -164,6 +165,27 @@ Class Model_manufaktur extends CI_Model {
            ->get();
       return $search->row_array();
     }
+<<<<<<< HEAD
+     function delete_row($id)
+  {
+  $this->db->where('id_manufaktur', $id);
+  $this->db->delete('manufaktur'); 
+  }
+  public function get_by_id($id)
+  {
+    $this->db->from($this->table);
+    $this->db->where('id_manufaktur',$id);
+    $query = $this->db->get();
+
+    return $query->row();
+  }
+  function update_manu($where,$data){
+    $this->db->where($where);
+    $this->db->update('manufaktur',$data);
+  }
+
+=======
+>>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 }
 
 ?>
