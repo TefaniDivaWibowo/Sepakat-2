@@ -75,6 +75,11 @@ hr{
     margin-top: 20%;
     z-index: 999;
 }
+.small-banner{
+    background-image: url("http://localhost/Sepakat-2/assets/images/mainBanner.jpg");
+    background-size:cover;
+    background-position:top;
+}
 
 @media (max-width: 600px) {
   .carousel-caption {

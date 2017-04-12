@@ -25,12 +25,12 @@
             <hr>
             <!--<p>Berikut adalah 5 perusahaan yang paling baru mendaftar di website ini.</p>-->
         </div>
-      
+
       <?php
        foreach ($query as $a) {
            $id    = $a['id_manufaktur'];
            $icon  = $a['icon'];
-         
+
       ?>
       <a href="<?= base_url('perusahaan/detail/'.$id)?>">
         <div class="col-xs-12 latest-post">
@@ -52,9 +52,9 @@
         </div>
       </a>
       <?php
-        } 
+        }
       ?>
-      
+
         </div>
         <br>
         <center>
@@ -65,17 +65,17 @@
 
 <div class="container-fluid" style="padding:0;">
     <h1 class="text-center">Bagaimana Sepakat Bekerja?</h1><hr><br>
-    <div class="col-md-4 how-to" style="background-image:url('<?php echo base_url("assets/images/howto/search.jpg"); ?>');">
+    <div class="col-md-4 how-to" style="min-height:500px; background-image:url('<?php echo base_url("assets/images/howto/search.jpg"); ?>');">
         <div class="text-center howtotext">
             <h3>Cari Partner Kerja</h3>
         </div>
     </div>
-    <div class="col-md-4 how-to" style="background-image:url('<?php echo base_url("assets/images/howto/communicate.jpg"); ?>');">
+    <div class="col-md-4 how-to" style="min-height:500px;background-image:url('<?php echo base_url("assets/images/howto/communicate.jpg"); ?>');">
         <div class="text-center howtotext">
             <h3>Komunikasikan Kerjasama</h3>
         </div>
     </div>
-    <div class="col-md-4 how-to" style="background-image:url('<?php echo base_url("assets/images/howto/handshake.jpg"); ?>');">
+    <div class="col-md-4 how-to" style="min-height:500px;background-image:url('<?php echo base_url("assets/images/howto/handshake.jpg"); ?>');">
         <div class="text-center howtotext">
             <h3>Sepakati Kontrak Kerja Bersama</h3>
         </div>
@@ -90,7 +90,7 @@
             <hr>
             <!--<p>Berikut adalah 6 kategori teraktif di website ini.</p>-->
         </div>
-          <?php 
+          <?php
             foreach($kueri as $u){
               $id = $u['id_kategori'];
           ?>

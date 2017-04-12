@@ -4,11 +4,8 @@ Class Model_bahan_baku extends CI_Model {
 	function __construct(){
 		$this->load->database();
 	}
-<<<<<<< HEAD
 var $table = 'bahan_baku';
-=======
 
->>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 	function get_id_ban($id_user){
 		$query = $this->db
              ->select('*')
@@ -70,18 +67,18 @@ var $table = 'bahan_baku';
   }
 
 	function get_bahan($id){
-<<<<<<< HEAD
+
     $query = $this->db->get('bahan_baku');
     return $query->result_array();
-=======
+
 		$query = $this->db
              ->select('*')
              ->from('bahan_baku')
              ->where('kategori', $id)
              ->get();
 		return $query->result_array();
->>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 	}
+
 public function get_by_id($id)
   {
     $this->db->from($this->table);
@@ -91,7 +88,7 @@ public function get_by_id($id)
     return $query->row();
   }
 	function select_data(){
-		$query= $this->db->query('SELECT * FROM  `bahan_baku` 
+		$query= $this->db->query('SELECT * FROM  `bahan_baku`
     WHERE nama IS NOT NULL and alamat IS NOT NULL and no_telp IS NOT NULL and email IS NOT NULL and total_produksi IS NOT NULL and kategori IS NOT NULL and barang_bahan IS NOT NULL and provinsi IS NOT NULL and kota IS NOT NULL');
     return $query->result_array();
 	}
@@ -208,30 +205,28 @@ function update_bahan($where,$data){
     $kategori = $this->db->query('SELECT * FROM `kategori` LIMIT 6');
     return $kategori->result_array();
   }
-<<<<<<< HEAD
+
   public function update_gamlat($id_user, $data){
       $this->db->where('id_user', $id_user)
             ->set($data)
             ->update('bahan_baku');
     }
     function tambahbahan($data1){
-  
+
   $this->db->insert('bahan_baku', $data1);
-  
+
   }
   function delete_row($id)
   {
   $this->db->where('id_bahan_baku', $id);
-  $this->db->delete('bahan_baku'); 
+  $this->db->delete('bahan_baku');
   }
-=======
 
   public function update_ker_ban($where, $data, $table){
       $this->db->where($where)
                ->set($data)
                ->update($table);
     }
->>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 }
 
 ?>

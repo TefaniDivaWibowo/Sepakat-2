@@ -1,39 +1,3 @@
-<?php
-//   $id_user  = $this->session->userdata('id_user');
-//   $email    = $this->session->userdata('username');
-
-//   //mysqli_select_db('nama koneksi', 'nama database')
-
-//   $conn     = mysqli_connect("localhost","id1060855_sepakat","sepakat","id1060855_sepakat_db");
-//   $man      = mysqli_query($conn, "SELECT * FROM `manufaktur` WHERE `email` = '$email'");
-//   while($bb = mysqli_fetch_assoc($man)){
-//     $id     = $bb['id_manufaktur'];
-//     $nama   = $bb['nama'];
-//     $alamat = $bb['alamat'];
-//     $provinsi   = $bb['provinsi'];
-//     $kota       = $bb['kota'];
-//     $no         = $bb['no_telp'];
-//     $tipe       = $bb['tipe'];
-//     $bar_dib    = $bb['barang_dibutuhkan'];
-//     $ban_keb    = $bb['banyak_kebutuhan'];
-//     $gambar     = $bb['gambar_latar'];
-//   }
-
-//   require_once 'koneksi_pdo.php';
-//   $select = $koneksi->query("SELECT * FROM `kota`");
-//   while ($data = $select->fetch(PDO::FETCH_ASSOC)) {
-//     $prov_kota[] = $data['provinsi'];
-//     $kota_kota[] = $data['kota'];
-//   }
-
-//   $selectbar = $koneksi->query("SELECT `kategori`.`kategori`, `barang_bahan`.`nama_bb` FROM `barang_bahan` INNER JOIN `kategori`ON `barang_bahan`.`id_kategori`=`kategori`.`id_kategori`");
-//   while ($databar = $selectbar->fetch(PDO::FETCH_ASSOC)) {
-//     $kategoribar[]  = $databar['kategori'];
-//     $barangbar[]  = $databar['nama_bb'];
-//   }
-
-?>
-
 <div class="solid-banner" style="background-image: url('<?php if($perusahaan[0]['gambar_latar'] != null) echo base_url($perusahaan[0]['gambar_latar']); ?>');">
   <div class="container" style="padding-top:10%;color:white;">
     <h1>Lengkapi Data Perusahaan Anda</h1>
@@ -52,7 +16,7 @@
         <form method="POST" action="<?php echo base_url();?>Perusahaan/update/<?php echo $perusahaan[0]['id_user'];?>" enctype="multipart/form-data">
 
         <div class="col-md-10">
-          <div class="input-group input-data  "> 
+          <div class="input-group input-data  ">
             <input type="hidden" class="form-control" name="idus" <?php echo 'value = "' . $perusahaan[0]['id_user'] . '"';?>/>
           </div>
           <div class="input-group input-data">
@@ -69,7 +33,7 @@
                 } else {
                   echo "<option value=''>Provinsi</option>";
                 }
-                  foreach($provinsi as $data){ 
+                  foreach($provinsi as $data){
                     echo "<option value=" . $data['provinsi'] . "> ". $data['provinsi'] . "</option>"; }
                ?>
             </select>
@@ -105,7 +69,7 @@
               <option value="Perusahaan Kecil">Perusahaan Kecil</option>
             </select>
           </div>
-          <!--<div class="input-group input-data">        
+          <!--<div class="input-group input-data">
             <select class="form-control" name="kategori" onchange="combobarang()" id="kategori">
                 <option value="">Kategori</option>
                     /*require_once 'koneksi_pdo.php';
@@ -157,7 +121,7 @@
 </div>
 
 <script>
-  function combobarang() 
+  function combobarang()
   {
     var combo_kategori = $('#kategori').val();
     //console.log(combo_kategori);
@@ -172,7 +136,7 @@
     });
   }
 
-  function combokota() 
+  function combokota()
   {
     var combo_provinsi = $('#provinsi').val();
     console.log(combo_provinsi);

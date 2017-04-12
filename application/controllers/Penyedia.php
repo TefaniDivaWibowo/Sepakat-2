@@ -126,7 +126,7 @@ Class Penyedia extends CI_Controller{
   	}
 
   	public function up_gamlat(){
-  	$this->load->model('model_manufaktur');
+  	    $this->load->model('model_manufaktur');
 		$target_dir = "assets/images/gam_lat/";
 		$target_file = $target_dir . basename($_FILES["fileLatar"]["name"]);
 		$uploadOk = 1;

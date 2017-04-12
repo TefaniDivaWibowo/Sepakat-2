@@ -4,7 +4,6 @@
 <link rel="shortcut icon" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>"/>
 <link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>"/>
-<link rel="stylesheet" href="<?php echo base_url("assets/css/style-extra.css"); ?>"/>
 <link rel="stylesheet" href="<?php echo base_url("assets/css/footer.css"); ?>"/>
 <link rel="stylesheet" href="<?php echo base_url("assets/css/summernote.css"); ?>"/>
 <link rel="stylesheet" href="<?= base_url("assets/css_feed/modal.css");?>">
@@ -24,6 +23,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
 
 <link rel="" href="<?php echo base_url();?>"/>
+<link rel="stylesheet" href="<?php echo base_url("assets/css/style-extra.css"); ?>"/>
 
 <style>
     .main-banner{
@@ -70,6 +70,28 @@
         position: relative;
         text-align: center;
     }
+    .small-banner{
+        background-image: url("<?php echo base_url("assets/images/mainBanner.jpg"); ?>");
+        height: 40%;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .small-banner:before{
+        content: '';
+        width: 100%;
+        height: 40%;
+        position: absolute;
+        left: 0px;
+        background: rgba(0,0,0,0.6);
+        z-index: 1;
+    }
+    .small-banner>.container{
+        z-index: 999;
+        position: relative;
+        text-align: center;
+    }
     .solid-banner{
         background-color: #51c4de;
         height: 80%;
@@ -109,7 +131,7 @@ function closeNav() {
 }
 </script>
 
-<nav id="navigate"class="nav navbar navbar-default navbar-fixed-top">
+<nav id="navigate"class="nav navbar navbar-default navbar-fixed-top" style="border-color:transparent;">
   <div class="container" style="padding:0;">
     <div class="pull-left">
       <a class="navbar-brand"><i class="fa fa-fw fa-2x fa-handshake-o"></i></a>
@@ -195,19 +217,26 @@ function closeNav() {
 
 <div class="modal fade" id="ModalNotif" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="margin-top:50%;">
+    <div class="modal-content" style="margin-top:50%;width:700px;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Notifikasi Anda</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="min-height:150px;">
         <div class="col-xs-12">
             <?php if($_SESSION['tipe_user'] == 'Manufaktur'){?>
+                <?php if($_SESSION['isinotif'] != null){?>
             	<?php foreach ($_SESSION['isinotif'] as $data) { ?>
             		<p>Penyedia bahan baku <a href="<?php echo base_url('bahan_baku/showmore_detail/').$data['id_bahan_baku']?>" ><?php echo $data['nama']?></a> ingin mengajak anda untuk bekerja sama.</p>
             		<a href="<?php echo base_url('kerjasama/terima_bahanbaku/'.$data['id_bahan_baku'])?>"><button class="btn btn-primary">Setuju</button></a>
             		<a href="<?php echo base_url('kerjasama/tolak_bahanbaku/'.$data['id_bahan_baku'])?>"><button class="btn btn-warning">Tidak Setuju</button></a>
-            	<?php } ?>
+                <?php } ?>
+            	<?php } else { ?>
+                    <br>
+                    <p style="color:#808080">Tidak ada notifikasi saat ini....</p>
+                    <br>
+
+                <?php } ?>
             <?php }?>
 
 

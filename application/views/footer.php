@@ -47,7 +47,7 @@
       interval: 3000
     })
     $(document).scroll(function(){
-      if($(document).scrollTop() > 50){
+      if($(document).scrollTop() > 150){
         $('#navigate').css('background-color', 'rgba(255, 255, 255, 1.0)');
         $('#navigate').css('color', '#000000');
         $('#navigate').css('font-weight', '600');
@@ -59,12 +59,6 @@
         $('#navigate').css('box-shadow', 'none');
       }
     })
-//     $('#summernote').summernote({
-//       height:200,
-//       minHeight: null,
-//       maxHeight: null,
-//       focus: true
-//     });
   });
 </script>
 

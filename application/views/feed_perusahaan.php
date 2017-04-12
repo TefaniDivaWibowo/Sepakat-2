@@ -5,53 +5,32 @@
 
 <body style="background-color:#f0f0f0">
 
-<div class="group container-full" style="height:40%;background-image:url(media/banner.png);background-size:cover;background-position:center;">
-  <div class="container" style="padding-top:7%;">
-    <center><h1 style="font-family:'abel';color:white;font-size:350%;margin-bottom: 0px;text-shadow:2px 2px 4px rgba(0,0,0,0.45);">Find Your Inspirative Story</h1>
-    <span class="banner-subtext" style="text-shadow:2px 2px 4px rgba(0,0,0,0.45);">And be ready to create and share your own.</span></center>
+<div class="small-banner" >
+  <div class="container" style="padding-top:10%;color:white;">
+    <h1>Jadilah Sosial</h1>
+    <p>Jangan tertinggal informasi terbaru.</p>
   </div>
-  <!-- <div class="container banner-content-down"> -->
 </div>
 
-<div class="container-full" style="box-shadow:1px 2px 20px 2px rgba(0,0,0,0.15);background-color:#22202B;">
-  <nav id="navigate" class="" style="width:100px;">
-    <div class="container pad" style="padding:0;">
-      <div class="content-right">
-
+<div class="container-fluid" style="box-shadow:1px 2px 20px 2px rgba(0,0,0,0.15);">
+  <nav id="navigate" class="nav navbar navbar-default" style="margin-bottom:0px;">
+    <div class="container" style="padding:0;">
+      <div class="pull-left">
+        <h2>Feeds</h2>
       </div>
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-          <a href="<?= base_url('index.php/feed/feed_detail/'.$this->session->userdata('id_user'))?>"><button class="btn btn-incard" style="margin-top:13px; margin-bottom:13px;"><i class="fa fa-eye"></i></button></a>
+      <div class="pull-right">
+        <button class="btn-utama" onclick="" data-toggle="modal" data-target="#myModal" style="margin-top:3px;"><i class="fa fa-2x fa-pencil inverse"></i></button>
+        <a href="<?= base_url('index.php/feed/feed_detail/'.$this->session->userdata('id_user'))?>"><button class="btn-utama" style="margin-top:3px;"><i class="fa fa-2x fa-user"></i></button></a>
+      </div>
+      <form class="navbar-form navbar-left" style="width:70%;">
+        <div class="form-group" style="width:70%;">
+          <!-- <span class="input-group-addon">Pencarian</span> -->
+          <input type="text" class="form-control" placeholder="Masukkan keyword" style="width:100%;font-size:100%;">
+        </div>
+        <button class="btn btn-utama"><i class="fa fa-fw fa-search"></i></button>
+      </form>
     </div>
-    
   </nav>
-</div>
-
-<div class="container-fluid" style="background-color:white;margin-top:60px;">
-  <div class="container"> 
-    <form enctype="multipart/form-data" action="<?= base_url('index.php/feed/add_perusahaan_feed')?>" method="POST" >
-      <center>
-        <h2>Buat Feed Baru Mengenai Perusahaan Anda</h2>
-        <hr />
-        <input type="hidden" name="id_us" value="<?= $idus;?>">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.7/summernote.min.js"></script>
-
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"/>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.7/summernote.min.css" rel="stylesheet"/>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
-
-        <div id="summernote" class="form-control"></div>
-
-        <textarea name="posting" style="display:none;" id="lawsContent" name="deskripsi" class="form-control"></textarea>
-        <br>
-        <input type="file" class="btn btn-primary" name="fileToUpload" id="fileToUpload"/>
-        <br>
-        <input type="submit" name="submit" class="btn btn-primary" value="Simpan Feed"/>
-      </center>
-    </form>
-  </div>
 </div>
 
 <div class="container-fluid section1" style="padding-top:20px;">
@@ -237,3 +216,41 @@
   <span>&nbsp;</span>
   <span>&nbsp;</span>
 
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="width:800px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Buat Posting Baru</h4>
+        </div>
+        <div class="modal-body">
+
+          <form enctype="multipart/form-data" action="<?= base_url('index.php/feed/add_perusahaan_feed')?>" method="POST" >
+            <center>
+              <h2>Buat Feed Baru Mengenai Perusahaan Anda</h2>
+              <hr />
+            </center>
+              <input type="hidden" name="id_us" value="<?= $idus;?>">
+              <div class="form-group">
+                <input id="UploadFile" placeholder="Pilih Gambar" class="form-control" disabled />
+                <span class="btn btn-file btn-block" style="border-radius:0px;">Pilih gambar untuk diunggah <input type="file" name="fileToUpload" id="UploadButton"></span>
+              </div>
+
+              <div id="summernote" class="form-control"></div>
+              <textarea name="posting" style="display:none;" id="lawsContent" name="deskripsi" class="form-control"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
+          <input type="submit" name="submit" class="btn btn-primary" value="Simpan Feed"/>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.getElementById("UploadButton").onchange = function () {
+    document.getElementById("UploadFile").value = this.value;
+  };
+  </script>
