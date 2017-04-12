@@ -4,7 +4,7 @@ Class Model_user extends CI_Model {
 	function __construct(){
 		$this->load->database();
 	}
-var $table = 'user';
+
 	function select_data(){
 		$user = $this->db
 		->select('*')
@@ -12,15 +12,6 @@ var $table = 'user';
 		->get();
 		return $user->result_array();
 	}
-
-  public function get_by_id($id)
-  {
-    $this->db->from($this->table);
-    $this->db->where('id_user',$id);
-    $query = $this->db->get();
-
-    return $query->row();
-  }
 
 	function hapus_user($where,$table){
 		$this->db->where($where);
@@ -49,27 +40,6 @@ var $table = 'user';
 		->where('pengirim', 'Bahan Baku')
 		->get();
 		return $query->result_array();
-	}
-	function selectSearch($table, $where){
-    $search = $this->db->select('*')
-         ->from($table)
-         ->where($where)
-         ->get();
-    return $search->row_array();
-  }
-  function update_user($where,$data){
-    $this->db->where($where);
-    $this->db->update('user',$data);
-  }
-  function delete_row($id)
-  {
-  $this->db->where('id_user', $id);
-  $this->db->delete('user'); 
-  }
-   function tambahuser($data1){
-	
-	$this->db->insert('user', $data1);
-	
 	}
 }
 

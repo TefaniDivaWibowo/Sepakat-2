@@ -6,11 +6,20 @@ Class Model_kategori extends CI_Model {
 	}
 
 	function select_data(){
-		$provinsi = $this->db
+		$kategori= $this->db
 		->select('*')
-		->from('provinsi')
+		->from('kategori')
 		->get();
-		return $provinsi->result_array();
+		return $kategori->result_array();
+	}
+
+	function select_id($kategori){
+		$kategori= $this->db
+		->select('*')
+		->from('kategori')
+		->where('kategori', $kategori)
+		->get();
+		return $kategori->result_array();
 	}
 }
 

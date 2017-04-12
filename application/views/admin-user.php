@@ -21,17 +21,15 @@
     <?php
         $no = 0;
         foreach($user as $u){
-          $id = $u['id_user'];
         $no++;
     ?>
     <tr>
-    <input type="hidden" name="id_user1" value="<?php echo $user[$no-1]['id_user'];?>"></input>
       <td><?php echo $no; ?></td>
       <td><?php echo $user[$no-1]['username']; ?></td>
       <td><?php echo $user[$no-1]['password']; ?></td>
       <td><?php echo $user[$no-1]['konfirmasi']; ?></td>
       <td><?php echo $user[$no-1]['perusahaan']; ?></td>
-      <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button" onclick="edit_user(<?php echo $id;?>)"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <a href="del_user/<?php echo $user[$no-1]['id_user'];?>" onclick="return confirmDelete();"><button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></a></td>
+      <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
     </tr>
     <?php
     }
@@ -65,7 +63,6 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ModalAddLabel"><i class="fa fa-fw fa-plus-circle"></i><~-Tambah Data Baru</h4>
       </div>
-      <form method="POST" action="<?php echo base_url(); ?>Admin/insert_user">
       <div class="modal-body">
         <div class="form-group">
           <span>Username :</span>
@@ -75,59 +72,40 @@
           <span>Password :</span>
           <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
         </div>
-        <div class="form-group">
-          <span>Perusahaan</span>
-           <select name="perus" class="form-control show-tick">                        
-        <option value="Manufaktur"/>Manufaktur</option>
-        <option value="Bahan Baku"/>Bahan Baku</option>
-        </select>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
-         <input type="submit" name="submit" class="btn bg-red waves-effect" value="Tambah">
-        <!-- <button type="submit" name="submit" class="btn btn-primary">Tambahkan Data</button> -->
+        <button type="button" class="btn btn-primary">Tambahkan Data</button>
       </div>
-      </form>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditLabel">
   <div class="modal-dialog" role="document">
-  
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ModalEditLabel"><i class="fa fa-fw fa-pencil-square"></i>Sunting Data</h4>
       </div>
-      <form method="POST" action="" id="edUser">
       <div class="modal-body">
         <div class="form-group">
           <span>ID User :</span>
-          <input disabled type="text" name="iduserf" id="iduserf" class="form-control" placeholder="ID User" value="" />
-          <input type="hidden" name="iduser" id="iduser" value=""/>
+          <input disabled type="text" name="iduser" id="iduser" class="form-control" placeholder="ID User" value="2" />
         </div>
         <div class="form-group">
           <span>Username :</span>
-          <input type="text" name="user" id="user" class="form-control" placeholder="Username" value=""/>
+          <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="moklet"/>
         </div>
         <div class="form-group">
           <span>Password :</span>
           <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="fewfwe"/>
         </div>
       </div>
-      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
-        <button type="button" onclick="saveuser()" class="btn btn-primary">Simpan Perubahan</button>
+        <button type="button" class="btn btn-primary">Simpan Perubahan</button>
       </div>
     </div>
-    
   </div>
 </div>
-<script type="text/javascript">
-    function confirmDelete() {
-        return confirm('Are you sure you want to delete this user?');
-    }
-</script>

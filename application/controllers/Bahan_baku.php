@@ -12,22 +12,22 @@ class Bahan_baku extends CI_Controller {
       $this->load->view('header');
       $this->load->view('penyedia-list', $data);
       $this->load->view('footer');
-	}
+	}	
 
 	public function showmore_detail($id){
       $this->load->database();
-
+		 
       $this->load->model('Model_bahan_baku');
       $data['query'] 	= $this->Model_bahan_baku->get_databahan($id);
-
+		
 			$id_user    		= $this->session->userdata('id_user');
 			$data['idm'] 		= $this->Model_bahan_baku->get_idm($id_user);
 
       $this->load->view('header');
       $this->load->view('penyedia-detail', $data);
       $this->load->view('footer');
-  }
-
+  }	
+	
  public function tipe()
     {
         $this->load->model('Model_bahan_baku');

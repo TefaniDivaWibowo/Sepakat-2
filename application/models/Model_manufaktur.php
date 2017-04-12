@@ -5,8 +5,7 @@ Class Model_manufaktur extends CI_Model {
   function __construct(){
     $this->load->database();
   }
-  var $table = 'manufaktur';
-
+  
   function get_peru_all($id){
       $query = $this->db->select('*')
                         ->from('manufaktur')
@@ -14,37 +13,37 @@ Class Model_manufaktur extends CI_Model {
                         ->get();
       return $query->result_array();
   }
-
+  
   function get_peru(){
-    $query = $this->db->get('manufaktur');
+    $query = $this->db->query("SELECT * FROM `manufaktur` WHERE `kota` IS NOT NULL");
     return $query->result_array();
   }
-
+  
   function get_peru_home(){
     $query = $this->db->query("SELECT * FROM `manufaktur` WHERE `kota` IS NOT NULL LIMIT 5");
+    return $query->result_array();
+  }
+  
+  function get_pen_single($id){
+    $query = $this->db
+      ->select('id_bahan_baku, nama, alamat, no_telp, email, bukti, total_produksi, kategori.kategori, barang_bahan, provinsi, kota, bahan_baku.icon, gambar_latar, deskripsi, id_user, tipe')
+      ->from('bahan_baku')
+      ->join('kategori','kategori.id_kategori = bahan_baku.kategori')
+      ->where('bahan_baku.id_user',$id)
+      ->get();
+      
     return $query->result_array();
   }
 
   function get_peru_single($id){
     $query = $this->db
-      ->select('*')
+      ->select('id_manufaktur, nama, alamat, provinsi, kota, no_telp, email, tipe, deskripsi, barang_dibutuhkan, banyak_kebutuhan,  manufaktur.icon, gambar_latar, bukti, manufaktur.id_user')
       ->from('user')
       ->join('manufaktur','user.id_user = manufaktur.id_user')
       ->where('user.id_user',$id)
       ->get();
-
+      
     return $query->result_array();
-  }
-
-  function get_notif($id){
-    $query = $this->db
-      ->select('*')
-      ->from('kerjasama')
-      ->where('id_manufaktur', $id)
-      ->where('konfirmasi', 0)
-      ->where('pengirim', 'Bahan Baku')
-      ->get();
-    return $query->num_rows();
   }
 
   function select_data(){
@@ -56,7 +55,7 @@ Class Model_manufaktur extends CI_Model {
     ->get();
     return $manufaktur->result_array();
   }
-
+  
   function tambah_manufaktur($data){
     $this->db->insert('manufaktur', $data);
   }
@@ -66,7 +65,7 @@ Class Model_manufaktur extends CI_Model {
   $this->db->delete($table);
   }
 
-  function edit_manufaktur($where,$table){
+  function edit_manufaktur($where,$table){    
   return $this->db->get_where($table,$where);
   }
 
@@ -126,7 +125,7 @@ Class Model_manufaktur extends CI_Model {
         $query = $this->db->get('manufaktur');
         return $query->result_array();
       }
-
+      
     }
 
     public function update_profil($id, $data)
@@ -165,24 +164,6 @@ Class Model_manufaktur extends CI_Model {
            ->get();
       return $search->row_array();
     }
-     function delete_row($id)
-  {
-  $this->db->where('id_manufaktur', $id);
-  $this->db->delete('manufaktur'); 
-  }
-  public function get_by_id($id)
-  {
-    $this->db->from($this->table);
-    $this->db->where('id_manufaktur',$id);
-    $query = $this->db->get();
-
-    return $query->row();
-  }
-  function update_manu($where,$data){
-    $this->db->where($where);
-    $this->db->update('manufaktur',$data);
-  }
-
 }
 
 ?>

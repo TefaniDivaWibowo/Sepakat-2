@@ -4,7 +4,7 @@ Class Model_barang_bahan extends CI_Model {
 	function __construct(){
 		$this->load->database();
 	}
-var $table = 'barang_bahan';
+
 	function select_data(){
 		$barang_bahan = $this->db
 		->select('id_bb, nama_bb, barang_bahan.id_kategori, kategori.kategori')
@@ -13,14 +13,7 @@ var $table = 'barang_bahan';
 		->get();
 		return $barang_bahan->result_array();
 	}
-	public function get_by_id($id)
-  {
-    $this->db->from($this->table);
-    $this->db->where('id_bb',$id);
-    $query = $this->db->get();
-
-    return $query->row();
-  }
+	
 	function selectSearch($table, $where){
 		$search = $this->db->select('*')
 				 ->from($table)
@@ -46,15 +39,6 @@ var $table = 'barang_bahan';
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}
-	function delete_row($id)
-  {
-  $this->db->where('id_bb', $id);
-  $this->db->delete('barang_bahan'); 
-  }
-  function update_bar($where,$data){
-    $this->db->where($where);
-    $this->db->update('barang_bahan',$data);
-  }
 }
 
 ?>

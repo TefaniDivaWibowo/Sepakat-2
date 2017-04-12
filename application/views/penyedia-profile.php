@@ -48,10 +48,16 @@
     <div class="row company-itemhead">
       <div class="col-md-2">
           <div class="input-group">
-            <img src="<?php echo base_url($penyedia[0]['icon']); ?>" class="img-responsive"/>
+            <?php
+              if ($penyedia[0]['icon'] != NULL) {
+            ?>
+                <img src="<?php echo base_url($penyedia[0]['icon']); ?>" class="img-responsive"/>
+            <?PHP
+              }
+            ?>
           </div>
         </div>
-      <form action="<?= base_url('penyedia/up_dat');?>" method="post">
+      <form action="<?= base_url('penyedia/up_dat');?>" method="post" enctype="multipart/form-data">
 
       <div class="col-md-10">
 
@@ -59,7 +65,6 @@
       <input type="hidden" name="id_bab" value="<?= $penyedia[0]['id_bahan_baku'];?>"/>
 
         <div class="input-group input-data">
-          <label>Nama Penyedia</label>
           <input type="text" class="form-control" name="nama" placeholder="Nama penyedia" value="<?= $penyedia[0]['nama'];?>" />
         </div>
         <div class="input-group input-data">
@@ -72,7 +77,7 @@
           <input type="email" class="form-control" name="email" placeholder="Email" value="<?= $this->session->userdata('username');?>" />
         </div>
          <div class="input-group input-data">
-          <input type="text" class="form-control" name="total" placeholder="Total Produksi" value="<?= $penyedia[0]['total_produksi'];?>" />
+          <input type="text" class="form-control" name="total" placeholder="Total Produksi (Kg)" value="<?= $penyedia[0]['total_produksi'];?>" />
         </div>
         <div class="input-group input-data">
             <select class="form-control" name="provinsi" onchange="combokota()" id="provinsi">
@@ -82,7 +87,7 @@
                 } else {
                   echo "<option value=''>Provinsi</option>";
                 }
-                  foreach($provinsi as $data){
+                  foreach($provinsi as $data){ 
                     echo "<option value=" . $data['provinsi'] . "> ". $data['provinsi'] . "</option>"; }
                ?>
             </select>
@@ -99,14 +104,14 @@
             </select>
           </div>
           <div class="input-group input-data">
-            <select class="form-control" name="kategori" onchange="combokategori()" id="kategori">
+            <select id="kategori" class="form-control" name="kategori" onchange="combobarang()" >
               <?php
                 if($penyedia[0]['kategori'] != NULL){
                   echo "<option value=" . $penyedia[0][''] . "> ". $penyedia[0]['kategori'] . "</option>";
                 } else {
                   echo "<option value=''>Kategori</option>";
                 }
-                  foreach($kategori as $data){
+                  foreach($kategori as $data){ 
                     echo "<option value=" . $data['kategori'] . "> ". $data['kategori'] . "</option>"; }
                ?>
             </select>
@@ -122,11 +127,28 @@
               ?>
             </select>
           </div>
+          <div class="input-group input-data">
+            <select name="tipe" class="form-control">
+              <?php
+                if($penyedia[0]['tipe'] != NULL){
+                  echo "<option value=" . $penyedia[0]['tipe'] . "> ". $penyedia[0]['tipe'] . "</option>";
+                } else {
+                  echo "<option value=''>Tipe Perusahaan Penyedia</option>";
+                }
+              ?>
+              <option value="Perusahaan Besar">Perusahaan Besar</option>
+              <option value="Perusahaan Sedang">Perusahaan Sedang</option>
+              <option value="Perusahaan Kecil">Perusahaan Kecil</option>
+            </select>
+          </div>
+
+          <div class="input-group input-data">
+            <input type="text" class="form-control" name="jam" placeholder="Jam Kerja Perusahaan" value="<?= $penyedia[0]['jam_kerja'];?>" />
+          </div>
+          </div>
 
         <br>
-      </div>
-
-
+ 
       <br>
       <center>
         <input type="file" class="btn btn-primary" name="fileToUpload" id="fileToUpload"/>
@@ -135,8 +157,10 @@
       </center>
 
       </form>
+
+      </div>
     </div>
-</div>
+  </div>
 
 <!--<div class="container-fluid" style="background-color:#fcfcfc;margin-top:60px;">
   <div class="container">
@@ -176,7 +200,6 @@
     </form>
   </div>
 </div>-->
-
 <div class="container-fluid" style="background-color:#fcfcfc;margin-top:60px;">
   <div class="container">
     <center>
@@ -192,3 +215,36 @@
     </center>
   </div>
 </div>
+</body>
+
+<script type="text/javascript">
+  function combobarang() 
+  {
+    var combo_kategori = $('#kategori').val();
+    //console.log(combo_kategori);
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('Perusahaan/getComboBahan/') ?>"+combo_kategori,
+      data : '',
+      success: function(data){
+        $('#barang').find('option').remove();
+        $('#barang').append(data);
+      }
+    });
+  }
+
+  function combokota() 
+  {
+    var combo_provinsi = $('#provinsi').val();
+    console.log(combo_provinsi);
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('Perusahaan/getComboKota/') ?>"+combo_provinsi,
+      data : '',
+      success: function(data){
+        $('#kota').find('option').remove();
+        $('#kota').append(data);
+      }
+    });
+  }
+</script>

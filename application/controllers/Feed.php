@@ -14,7 +14,7 @@
 
       if ($row_pen = 1){
         $data['user'] = $this->model_feed->get_user_pen_all($id);
-      }
+      } 
 
       if ($row_per = 1) {
         $data['user'] = $this->model_feed->get_user_per_all($id);
@@ -29,10 +29,53 @@
       $this->load->view('footer');
     }
 
-    public function add_perusahaan_feed(){
+    public function penyedia(){
       $this->load->helper('url');
       $this->load->database();
 
+      $this->load->model('model_feed');
+      $data['query'] = $this->model_feed->get_all_feed();
+
+      $id = $this->session->userdata('id_user');
+
+      $row_pen  = $this->model_feed->get_user_pen($id);
+      $row_per  = $this->model_feed->get_user_per($id);
+
+      if ($row_pen = 1){
+        $data['user'] = $this->model_feed->get_user_pen_all($id);
+        $this->load->view('header');
+        $this->load->view('feed_penyedia', $data);
+        $this->load->view('footer');
+      } else {
+        $this->load->view('header');
+        $this->load->view('feed_penyedia');
+        $this->load->view('footer');
+      }
+
+      if ($row_per = 1) {
+        $data['user'] = $this->model_feed->get_user_per_all($id);
+        $this->load->view('header');
+        $this->load->view('feed_penyedia', $data);
+        $this->load->view('footer');
+      } else{
+        $this->load->view('header');
+        $this->load->view('feed_penyedia');
+        $this->load->view('footer');
+      }
+
+      /*echo "<pre>";
+         print_r($data);
+      echo "</pre>";*/
+
+      /*$this->load->view('header');
+      $this->load->view('feed_penyedia', $data);
+      $this->load->view('footer');*/
+    }
+    
+    public function add_perusahaan_feed(){
+      $this->load->helper('url');
+      $this->load->database();
+      
       $target_dir = "assets/images/posting/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
       $uploadOk = 1;
@@ -79,7 +122,7 @@
       // if everything is ok, try to upload file
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-
+            
             $id   = $this->input->post('id_user');
 
             $data = array(
@@ -89,7 +132,7 @@
               'tanggal'       => date("Y/m/d"),
               'waktu'         => date("h:i:sa")
             );
-
+            
             $this->load->model('Model_feed');
             $this->Model_feed->addfeed($data);
             redirect('index.php/feed/perusahaan/'.$id);
@@ -118,7 +161,7 @@
           $this->load->view('footer');
         }
 
-
+	      
     }
   }
 ?>

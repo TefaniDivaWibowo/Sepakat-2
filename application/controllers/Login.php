@@ -66,21 +66,15 @@
 // 				$this->session->set_userdata('status', 'login');
 				$this->load->model('Model_bahan_baku');
 				$this->load->model('Model_manufaktur');
-                $this->load->model('Model_user');
-				$this->load->model('model_kerjasama');
+				$this->load->model('Model_user');
 
 				$id_bahan_baku 	= $this->Model_user->get_id_bahan_baku($q['id_user']);
 				$notif_ban 		= $this->Model_bahan_baku->get_notif($id_bahan_baku['id_bahan_baku']);
 				$nama_man['query']		= $this->Model_bahan_baku->get_name_ker_man($id_bahan_baku['id_manufaktur']);
 
-				$id_manufaktur 	= $this->Model_user->get_id_manufaktur($q['id_user']);
-				$notif_man 		= $this->Model_manufaktur->get_notif($id_manufaktur[0]['id_manufaktur']);
-                // echo "<pre>";
-                // print_r($_SESSION);
-				// print_r($id_manufaktur);
-				// print_r($id_manufaktur[0]['id_manufaktur']);
-				// echo "</pre>";
-                // die;
+				$id_manufaktur 	= $this->Model_user->get_id_manufaktur($this->session->userdata('id_user'));
+				$notif_man 		= $this->Model_bahan_baku->get_notif_man($id_manufaktur['id_manufaktur']);
+				$nama_ban['query']		= $this->Model_bahan_baku->get_name_ker_ban($id_manufaktur['id_bahan_baku']);
 
 				$array = array(
 					'tipe_user' 		=> $q['perusahaan'],
@@ -89,22 +83,15 @@
 					'username' 			=> $q['username'],
 					'status' 			=> 'login',
 					'id_bahan_baku'		=> $id_bahan_baku['id_bahan_baku'],
-                    'id_manufaktur'     => $id_manufaktur[0]['id_manufaktur'],
+					'id_manufaktur'		=> $id_manufaktur['id_manufaktur'],
 					'notif_ban'			=> $notif_ban,
 					'notif_man'			=> $notif_man,
-					'ker_man'			=> $id_bahan_baku['id_manufaktur']
+					'ker_man'			=> $id_bahan_baku['id_manufaktur'],
+					'ker_ban'			=> $id_manufaktur['id_bahan_baku']
 				);
 
 				$this->session->set_userdata($array);
-
-                if($_SESSION['tipe_user'] == 'Manufaktur'){
-                    $notif = array('isinotif' => $this->model_kerjasama->get_kerjasama_manufaktur($_SESSION['id_manufaktur']),);
-                    $this->session->set_userdata($notif);
-                } else if($_SESSION['tipe_user'] == 'Bahan Baku'){
-                    $notif = array('isinotif' => $this->model_kerjasama->get_kerjasama_bahanbaku($_SESSION['id_bahan_baku']),);
-                    $this->session->set_userdata($notif);
-                }
-
+				
 				/*echo "<pre>";
 				print_r($_SESSION);
 				print_r($notif);
@@ -113,7 +100,7 @@
 				print_r($id_bahan_baku[0]['id_bahan_baku']);
 				echo "</pre>";
 				die;*/
-
+				
 				$man	= $this->model_login->select(array("id_user" => $q['id_user']), 'manufaktur');
 				$ban	= $this->model_login->select(array("id_user" => $q['id_user']), 'bahan_baku');
 
@@ -125,7 +112,7 @@
 					}
 				}
 				else if($q['perusahaan'] == "Bahan Baku" && $q['konfirmasi'] == 1){
-					if($man['alamat'] == NULL){
+					if($ban['alamat'] == NULL){
 						redirect('index.php/penyedia/profile?id='.$this->session->userdata('id_user'));
 					} else {
 						redirect('index.php/feed/penyedia?id='.$this->session->userdata('id_user'));
@@ -135,7 +122,7 @@
 					redirect('index.php/admin?id='.$this->session->userdata('id_user'));
 				}
 				else if($q['perusahaan'] == "Manufaktur" && $q['konfirmasi'] != 1 ){
-					$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Mohon konfirmasi terlebih dahulu akun Anda!</div>');
+					$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Mohon konfirmasi terlebih dahulu akun Anda!</div>');	
 					$this->load->view('login');
 				}
 				else if($q['perusahaan'] == "Bahan Baku" && $q['konfirmasi'] != 1){
