@@ -27,35 +27,5 @@
 			         print_r($this->session->userdata);
 			      echo "</pre>";
     }
-
-    public function coba2(){
-    	$this->load->model('Model_user');
-    	$this->load->model('Model_bahan_baku');
-    	$id_manufaktur 	= $this->Model_user->get_id_manufaktur($this->session->userdata('id_user'));
-		$notif_man 		= $this->Model_bahan_baku->get_notif_man($id_manufaktur[0]['id_manufaktur']);
-
-				  echo "<pre>";
-			         print_r($id_manufaktur);
-			         print_r($notif_man);
-			         print_r($this->session->userdata());
-			      echo "</pre>";
-    }
-
-    public function coba3($kategori){
-      $this->load->model('model_kategori');
-
-      $id['id'] = $this->model_kategori->select_id($kategori);
-
-      echo '<pre>';
-      print_r($id);
-      echo '</pre>';
-
-      foreach ($id as $id_kat) {
-        $id_fin = $id_kat[0]['id_kategori'];
-      }
-      			  echo "<pre>";
-			         print_r($id_fin);
-			      echo "</pre>";
-    }
   }
 ?>

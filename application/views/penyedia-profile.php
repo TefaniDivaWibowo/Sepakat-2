@@ -48,16 +48,16 @@
     <div class="row company-itemhead">
       <div class="col-md-2">
           <div class="input-group">
-            <?php
-              if ($penyedia[0]['icon'] != NULL) {
-            ?>
-                <img src="<?php echo base_url($penyedia[0]['icon']); ?>" class="img-responsive"/>
-            <?PHP
-              }
-            ?>
+              ?php
+                if ($penyedia[0]['icon'] != NULL) {
+              ?>
+                  <img src="<?php echo base_url($penyedia[0]['icon']); ?>" class="img-responsive"/>
+              <?PHP
+                }
+              ?>
           </div>
         </div>
-      <form action="<?= base_url('penyedia/up_dat');?>" method="post" enctype="multipart/form-data">
+      <form action="<?= base_url('penyedia/up_dat');?>" method="post">
 
       <div class="col-md-10">
 
@@ -65,6 +65,7 @@
       <input type="hidden" name="id_bab" value="<?= $penyedia[0]['id_bahan_baku'];?>"/>
 
         <div class="input-group input-data">
+          <label>Nama Penyedia</label>
           <input type="text" class="form-control" name="nama" placeholder="Nama penyedia" value="<?= $penyedia[0]['nama'];?>" />
         </div>
         <div class="input-group input-data">
@@ -87,7 +88,7 @@
                 } else {
                   echo "<option value=''>Provinsi</option>";
                 }
-                  foreach($provinsi as $data){ 
+                  foreach($provinsi as $data){
                     echo "<option value=" . $data['provinsi'] . "> ". $data['provinsi'] . "</option>"; }
                ?>
             </select>
@@ -104,14 +105,14 @@
             </select>
           </div>
           <div class="input-group input-data">
-            <select id="kategori" class="form-control" name="kategori" onchange="combobarang()" >
+            <select class="form-control" name="kategori" onchange="combobarang()" id="kategori">
               <?php
                 if($penyedia[0]['kategori'] != NULL){
                   echo "<option value=" . $penyedia[0][''] . "> ". $penyedia[0]['kategori'] . "</option>";
                 } else {
                   echo "<option value=''>Kategori</option>";
                 }
-                  foreach($kategori as $data){ 
+                  foreach($kategori as $data){
                     echo "<option value=" . $data['kategori'] . "> ". $data['kategori'] . "</option>"; }
                ?>
             </select>
@@ -148,7 +149,8 @@
           </div>
 
         <br>
- 
+
+
       <br>
       <center>
         <input type="file" class="btn btn-primary" name="fileToUpload" id="fileToUpload"/>
@@ -157,10 +159,9 @@
       </center>
 
       </form>
-
-      </div>
+        </div>
     </div>
-  </div>
+</div>
 
 <!--<div class="container-fluid" style="background-color:#fcfcfc;margin-top:60px;">
   <div class="container">
@@ -200,6 +201,7 @@
     </form>
   </div>
 </div>-->
+
 <div class="container-fluid" style="background-color:#fcfcfc;margin-top:60px;">
   <div class="container">
     <center>
@@ -215,10 +217,8 @@
     </center>
   </div>
 </div>
-</body>
-
 <script type="text/javascript">
-  function combobarang() 
+  function combobarang()
   {
     var combo_kategori = $('#kategori').val();
     //console.log(combo_kategori);
@@ -233,7 +233,7 @@
     });
   }
 
-  function combokota() 
+  function combokota()
   {
     var combo_provinsi = $('#provinsi').val();
     console.log(combo_provinsi);

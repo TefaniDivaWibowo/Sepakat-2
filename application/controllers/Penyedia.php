@@ -6,23 +6,24 @@ Class Penyedia extends CI_Controller{
 			/*$id = $this->session->userdata('id_user');
 			$this->load->model('Model_bahan_baku');
 			$data['datall'] 	= $this->Model_bahan_baku->get_databahan($id);
-		
+
 			$this->load->model('Model_kategori');
 			$this->load->model('Model_provinsi');
 			$data['kategori'] 	= $this->Model_kategori->select_data();
 			$data['provinsi']   = $this->Model_provinsi->select_data();*/
 
-		$this->load->model('Model_bahan_baku');
-		$this->load->model('Model_kategori');
-		$data['penyedia'] 	= $this->Model_bahan_baku->get_pen_single($_SESSION['id_user']);
-		$data['provinsi']   = $this->Model_provinsi->select_data();
-		$data['kategori']   = $this->Model_kategori->select_data();
+            $this->load->model('Model_bahan_baku');
+            $this->load->model('Model_kategori');
+            $data['penyedia'] 	= $this->Model_bahan_baku->get_pen_single($_SESSION['id_user']);
+            $data['provinsi']   = $this->Model_provinsi->select_data();
+            $data['kategori']   = $this->Model_kategori->select_data();
 
-	  /*echo '<pre>';
-      print_r($data);
-      print_r($_SESSION);
-      echo '</pre>';*/
-		
+          /*echo '<pre>';
+          print_r($data);
+          print_r($_SESSION);
+          echo '</pre>';*/
+
+
       $this->load->view('header');
       $this->load->view('penyedia-profile', $data);
       $this->load->view('footer');
@@ -36,8 +37,7 @@ Class Penyedia extends CI_Controller{
   }
 
   		public function up_dat(){
-
-  			if ($_FILES["fileToUpload"]["name"] == NULL) {
+            if ($_FILES["fileToUpload"]["name"] == NULL) {
   				$this->load->model('model_barang_bahan');
 
 				$id_user 	= $this->input->post('id_user');
@@ -174,6 +174,8 @@ Class Penyedia extends CI_Controller{
 
 			}
   		}
+  		
+
 
 		public function up_met(){
 
@@ -238,7 +240,7 @@ Class Penyedia extends CI_Controller{
   	}
 
   	public function up_gamlat(){
-  		$this->load->model('model_manufaktur');
+  	    $this->load->model('model_manufaktur');
 		$target_dir = "assets/images/gam_lat/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$uploadOk = 1;
@@ -306,12 +308,12 @@ Class Penyedia extends CI_Controller{
 	public function list_kategori(){
 		$this->load->model('model_bahan_baku');
 		$data['kategori'] = $this->model_bahan_baku->select_data_kat();
-		
+
 		$this->load->view('header');
 		$this->load->view('penyedia-kategori', $data);
 		$this->load->view('footer');
 	}
-	
+
 	public function kerjasama(){
 		$this->load->model('model_kerjasama');
 
@@ -321,7 +323,7 @@ Class Penyedia extends CI_Controller{
 			'id_manufaktur' => $this->input->post('idm'),
 			'id_bahan_baku'	=> $this->input->post('idb'),
 			'konfirmasi' 	=> 0,
-			'pengirim' 		=> 'Manufaktur'	
+			'pengirim' 		=> 'Manufaktur'
 		);
 
 		$this->model_kerjasama->tambah_kerjasama($data);
@@ -330,22 +332,16 @@ Class Penyedia extends CI_Controller{
 	}
 
 	public function notifikasi(){
-		$this->load->model('model_bahan_baku');
+        $this->load->model('model_bahan_baku');
+        $this->load->model('model_manufaktur');
+        $this->load->model('model_kerjasama');
 
-		$id_man 	= $this->session->userdata('ker_man');
-		$id 		= $this->session->userdata('id_user');
+        $notif = array('isinotif' => $this->model_kerjasama->get_kerjasama_bahanbaku($_SESSION['id_bahan_baku']),);
+        $this->session->set_userdata($notif);
 
-		/*echo "<pre>";
-				print_r($this->session->userdata());
-		echo "</pre>";*/
-
-		$data['query'] = $this->model_bahan_baku->get_name_ker_man($id_man);
-
-		$this->load->view('notifikasi', $data);
-
-		/*echo "<pre>";
-				print_r($data);
-		echo "</pre>";*/
+		echo "<pre>";
+		print_r($_SESSION);
+		echo "</pre>";
 	}
 
 	public function ker_set($id_ban){
@@ -360,13 +356,6 @@ Class Penyedia extends CI_Controller{
 
 		$this->load->model('model_bahan_baku');
 		$this->model_bahan_baku->update_ker_ban($where, $data, 'kerjasama');
-
-		$jum_row 	= $this->session->userdata('notif_man');
-
-		$notif_new = $jum_row - 1;
-
-		$this->session->set_userdata($notif_new);
-
 		redirect('index.php/penyedia/profile');
 	}
 }

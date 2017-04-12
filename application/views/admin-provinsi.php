@@ -21,9 +21,10 @@
           $no++;
         ?>
         <tr>
+        <input type="hidden" name="idprov" id="idprov" class="form-control" value="<?php echo $provinsi[$no-1]['provinsi']; ?>" />
             <td><?php echo $no; ?></td>
             <td><?php echo $provinsi[$no-1]['provinsi']; ?></td>
-            <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button"><i class="fa fa-fw fa-pencil-square"></i> Edit</button> <button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></td>
+            <td><button class="btn btn-success" data-target="#ModalEdit" data-toggle="modal" type="button" onclick="edit_provinsi(<?php echo $u['provinsi'];?>)"><i class="fa fa-fw fa-pencil-square"></i> Edit</button><a href="del_prov/<?php echo str_replace('%20', ' ', $provinsi[$no-1]['provinsi']); ?>" onclick="return confirmDelete();"><button class="btn btn-danger" data-target="#ModalDelete" data-toggle="modal" type="button"><i class="fa fa-fw fa-trash-o"></i> Delete</button></a></td>
         </tr>
         <?php
         }
@@ -57,20 +58,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ModalAddLabel"><i class="fa fa-fw fa-plus-circle"></i><~-Tambah Data Baru</h4>
       </div>
+       <form method="POST" action="<?php echo base_url(); ?>Admin/insert_prov">
       <div class="modal-body">
         <div class="form-group">
-          <span>Username :</span>
-          <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
-        </div>
-        <div class="form-group">
-          <span>Password :</span>
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
+          <span>Nama Provinsi :</span>
+          <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Provinsi"/>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
-        <button type="button" class="btn btn-primary">Tambahkan Data</button>
+       <input type="submit" name="submit" class="btn bg-red waves-effect" value="Tambah">
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -82,20 +81,15 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ModalEditLabel"><i class="fa fa-fw fa-pencil-square"></i>Sunting Data</h4>
       </div>
+      <form method="POST" action="" id="edProv">
       <div class="modal-body">
         <div class="form-group">
-          <span>ID User :</span>
-          <input disabled type="text" name="iduser" id="iduser" class="form-control" placeholder="ID User" value="2" />
-        </div>
-        <div class="form-group">
-          <span>Username :</span>
-          <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="moklet"/>
-        </div>
-        <div class="form-group">
-          <span>Password :</span>
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="fewfwe"/>
-        </div>
+          <span>Nama Provinsi :</span>
+          <input type="text" name="namaf" id="namaf" class="form-control" placeholder="Nama Provinsi" value="" />
+          <input type="text" name="nama">
+        </div>        
       </div>
+      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
         <button type="button" class="btn btn-primary">Simpan Perubahan</button>
@@ -103,7 +97,11 @@
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this data?');
+    }
+</script>
 <!-- <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
