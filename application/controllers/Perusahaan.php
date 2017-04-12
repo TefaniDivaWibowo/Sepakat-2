@@ -105,9 +105,9 @@
       $data['perusahaan'] = $this->Model_manufaktur->get_peru_single($_SESSION['id_user']);
       $data['provinsi']   = $this->Model_provinsi->select_data();
 
-      /*echo '<pre>';
+      echo '<pre>';
       print_r($data);
-      echo '</pre>';*/
+      echo '</pre>';
 
       $this->load->view('header');
       $this->load->view('perusahaan-profile', $data);
@@ -209,30 +209,30 @@
       }
    }
 
-   ublic function getComboBahan($kategori) {
-     $this->load->database();
+    public function getComboBahan($kategori) {
+      $this->load->database();
 
-     $this->load->model('model_kategori');
-     $id['id'] = $this->model_kategori->select_id($kategori);
+      $this->load->model('model_kategori');
+      $id['id'] = $this->model_kategori->select_id($kategori);
 
-     /*echo '<pre>';
-     print_r($id);
-     echo '</pre>';*/
-     foreach ($id as $id_kat) {
-       $id_fin = $id_kat[0]['id_kategori'];
-     }
+      /*echo '<pre>';
+      print_r($id);
+      echo '</pre>';*/
+      foreach ($id as $id_kat) {
+        $id_fin = $id_kat[0]['id_kategori'];
+      }
 
-     $dataComboBahan =  $this->db->select('nama_bb')
-          ->from('barang_bahan')
-          ->join('kategori', 'kategori.id_kategori = barang_bahan.id_kategori')
-          ->where('kategori.id_kategori', $id_fin)
-          ->get()
-          ->result_array();
+      $dataComboBahan =  $this->db->select('nama_bb')
+           ->from('barang_bahan')
+           ->join('kategori', 'kategori.id_kategori = barang_bahan.id_kategori')
+           ->where('kategori.id_kategori', $id_fin)
+           ->get()
+           ->result_array();
 
-     foreach($dataComboBahan as $optionComboBahan){
-       echo "<option value='".$optionComboBahan['nama_bb']."'>".$optionComboBahan['nama_bb']."</option>";
-     }
-   }
+      foreach($dataComboBahan as $optionComboBahan){
+        echo "<option value='".$optionComboBahan['nama_bb']."'>".$optionComboBahan['nama_bb']."</option>";
+      }
+    }
 
     public function getComboKota($provinsi) {
       $this->load->database();
@@ -313,21 +313,21 @@
   }
 
   public function kerjasama(){
-      $this->load->model('model_kerjasama');
+    $this->load->model('model_kerjasama');
 
-      $id = $this->input->post('idb');
-      $idm  = $this->input->post('idm');
+    $id   = $this->input->post('idb');
+    $idm  = $this->input->post('idm');
 
-      $data = array(
-          'id_manufaktur' => $this->input->post('idm'),
-          'id_bahan_baku' => $this->input->post('idb'),
-          'konfirmasi' 	  => 0,
-          'pengirim' 	  => 'Bahan Baku'
-      );
+    $data = array(
+      'id_manufaktur' => $this->input->post('idm'),
+      'id_bahan_baku' => $this->input->post('idb'),
+      'konfirmasi'    => 0,
+      'pengirim'      => 'Bahan Baku'
+    );
 
-      $this->model_kerjasama->tambah_kerjasama($data);
+    $this->model_kerjasama->tambah_kerjasama($data);
 
-      redirect('perusahaan/detail/'.$this->input->post('idm'));
+    redirect('perusahaan/detail/'.$idm);
   }
 
   public function notifikasi(){
@@ -343,6 +343,5 @@
       print_r($_SESSION);
       echo "</pre>";
   }
-
 }
 ?>

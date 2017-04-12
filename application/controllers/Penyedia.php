@@ -12,17 +12,16 @@ Class Penyedia extends CI_Controller{
 			$data['kategori'] 	= $this->Model_kategori->select_data();
 			$data['provinsi']   = $this->Model_provinsi->select_data();*/
 
-            $this->load->model('Model_bahan_baku');
-            $this->load->model('Model_kategori');
-            $data['penyedia'] 	= $this->Model_bahan_baku->get_pen_single($_SESSION['id_user']);
-            $data['provinsi']   = $this->Model_provinsi->select_data();
-            $data['kategori']   = $this->Model_kategori->select_data();
+		$this->load->model('Model_bahan_baku');
+		$this->load->model('Model_kategori');
+		$data['penyedia'] 	= $this->Model_bahan_baku->get_pen_single($_SESSION['id_user']);
+		$data['provinsi']   = $this->Model_provinsi->select_data();
+		$data['kategori']   = $this->Model_kategori->select_data();
 
-          /*echo '<pre>';
-          print_r($data);
-          print_r($_SESSION);
-          echo '</pre>';*/
-
+	  /*echo '<pre>';
+      print_r($data);
+      print_r($_SESSION);
+      echo '</pre>';*/
 
       $this->load->view('header');
       $this->load->view('penyedia-profile', $data);
@@ -37,7 +36,7 @@ Class Penyedia extends CI_Controller{
   }
 
   		public function up_dat(){
-            if ($_FILES["fileToUpload"]["name"] == NULL) {
+  			if ($_FILES["fileToUpload"]["name"] == NULL) {
   				$this->load->model('model_barang_bahan');
 
 				$id_user 	= $this->input->post('id_user');
@@ -174,8 +173,6 @@ Class Penyedia extends CI_Controller{
 
 			}
   		}
-  		
-
 
 		public function up_met(){
 
@@ -240,7 +237,7 @@ Class Penyedia extends CI_Controller{
   	}
 
   	public function up_gamlat(){
-  	    $this->load->model('model_manufaktur');
+  		$this->load->model('model_manufaktur');
 		$target_dir = "assets/images/gam_lat/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$uploadOk = 1;
@@ -356,6 +353,13 @@ Class Penyedia extends CI_Controller{
 
 		$this->load->model('model_bahan_baku');
 		$this->model_bahan_baku->update_ker_ban($where, $data, 'kerjasama');
+
+		$jum_row 	= $this->session->userdata('notif_man');
+
+		$notif_new = $jum_row - 1;
+
+		$this->session->set_userdata($notif_new);
+
 		redirect('index.php/penyedia/profile');
 	}
 }

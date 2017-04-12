@@ -6,7 +6,7 @@ Class Model_kategori extends CI_Model {
 	}
 
 	function select_data(){
-		$kategori = $this->db
+		$kategori= $this->db
 		->select('*')
 		->from('kategori')
 		->get();

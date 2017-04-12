@@ -27,10 +27,9 @@ var $table = 'bahan_baku';
 
   function get_pen_single($id){
     $query = $this->db
-      ->select('id_bahan_baku, nama, alamat, no_telp, email, bukti, total_produksi, kategori.kategori, barang_bahan, provinsi, kota, bahan_baku.icon, gambar_latar, deskripsi, id_user, tipe')
+      ->select('*')
       ->from('bahan_baku')
-      ->join('kategori','kategori.id_kategori = bahan_baku.kategori')
-      ->where('bahan_baku.id_user',$id)
+      ->where('id_user',$id)
       ->get();
 
     return $query->result_array();
@@ -53,7 +52,6 @@ var $table = 'bahan_baku';
       ->where('id_bahan_baku',$id)
       ->get();
 
-
     return $query->result_array();
   }
 
@@ -62,21 +60,21 @@ var $table = 'bahan_baku';
       ->select('*')
       ->from('kerjasama')
       ->where('id_bahan_baku', $id)
-	  ->where('konfirmasi', 0)
-      ->where('pengirim', 'Manufaktur')
+      ->where('konfirmasi', 0)
       ->get();
     return $query->num_rows();
   }
 
   function get_notif_man($id){
     $query = $this->db
-  	->select('*')
-  	->from('kerjasama')
-  	->where('id_manufaktur', $id)
-  	->where('konfirmasi', 0)
-  	->get();
+      ->select('*')
+      ->from('kerjasama')
+      ->where('id_manufaktur', $id)
+      ->where('konfirmasi', 0)
+      ->get();
     return $query->num_rows();
   }
+
 	function get_idm($id_user){
     $query = $this->db
              ->select('*')
@@ -99,18 +97,14 @@ var $table = 'bahan_baku';
 		return $query->result_array();
 	}
 
-public function get_by_id($id)
-  {
-    $this->db->from($this->table);
-    $this->db->where('id_bahan_baku',$id);
-    $query = $this->db->get();
-
-    return $query->row();
-  }
 	function select_data(){
-		$query= $this->db->query('SELECT * FROM  `bahan_baku`
-    WHERE nama IS NOT NULL and alamat IS NOT NULL and no_telp IS NOT NULL and email IS NOT NULL and total_produksi IS NOT NULL and kategori IS NOT NULL and barang_bahan IS NOT NULL and provinsi IS NOT NULL and kota IS NOT NULL');
-    return $query->result_array();
+		$bahan_baku = $this->db
+		->select('id_bahan_baku, nama, alamat, no_telp, email, bukti, total_produksi, kategori.kategori, barang_bahan, bahan_baku.provinsi, kota.kota, id_user')
+		->from('bahan_baku')
+		->join('kategori', 'kategori.kategori = bahan_baku.kategori')
+		->join('kota', 'kota.kota = bahan_baku.kota')
+		->get();
+		return $bahan_baku->result_array();
 	}
 
 	function tambah_bahan_baku($data){
@@ -135,10 +129,7 @@ public function get_by_id($id)
     $this->db->where($where);
     $this->db->update($table,$data);
   }
-function update_bahan($where,$data){
-    $this->db->where($where);
-    $this->db->update('bahan_baku',$data);
-  }
+
   function update_ban($setdata, $where){
     $query = $this->db->query("UPDATE `tampil` SET `sell_kursi_studio`= '$setdata' WHERE `id_tampil`='$where'");
     return $query;

@@ -55,7 +55,7 @@
 					'id_user' 		=> $id
 				);
 
-				$fromEmail          = "sepakat2317@gmail.com";
+						$fromEmail          = "sepakat2317@gmail.com";
 		        $isiEmail           = "Selamat Datang di Sepakat <br>
 																	Halo " .$nama.",<br><br>
 																	Anda baru saja mendaftar di Sepakat dengan data Login sebagai berikut: <br><br>

@@ -87,29 +87,29 @@
       </div>
 
       <form action="<?= base_url('index.php/perusahaan/kerjasama');?>" method="POST" >
-
+        
          <?php
           if($id_user == NULL){
         ?>
             <input type="hidden" name="idm" value="">
             <input type="hidden" name="idb" value="">
-
+          
             <div class="col-md-4 pull-right"><br>
               <a href="<?= base_url('index.php/login/')?>"><span class='btn btn-primary'>Login untuk Bekerja Sama</span></a>
             </div>
-
+              
         <?php
           } else {
 
             $idm  = $query[0]['id_manufaktur'];
         ?>
-
+        
         <input type="hidden" name="idm" value="<?= $idm;?>">
         <input type="hidden" name="idb" value="<?= $id_bahan;?>">
 
         <div class="col-md-4 pull-right"><br>
           <?php
-          $email_sen  = $query[0]['email'];
+            $email_sen  = $query[0]['email'];
 
             $kerjasama  = mysqli_query($conn, "SELECT * FROM `kerjasama` WHERE `id_manufaktur` = '$idm' && `id_bahan_baku` = '$id_bahan'");
             $cc = mysqli_num_rows($kerjasama);
@@ -122,16 +122,16 @@
               while($dd = mysqli_fetch_assoc($kerjasama)) {
                 $kon = $dd['konfirmasi'];
                   if ($kon == 1) {
-                      ?>
+            ?>
 
 
+            
+            <a href = "mailto:<?= $email_sen?>"><span class='btn btn-primary'>Kirim Pesan</span></a>
 
-                      <a href = "mailto:<?= $email_sen?>"><span class='btn btn-primary'>Kirim Pesan</span></a>
-
-                      <?php
+            <?php
                   } elseif ($kon == 0) {
                     echo "<span class='btn btn-primary'>Menunggu konfirmasi</span>";
-                  }
+                  } 
               }
             } else {
               echo "<input type='submit' class='btn btn-primary' name='submit' value='Jadikan Rekan Kerja Sama'>";
@@ -145,6 +145,6 @@
 
 <div class="container-fluid" style="background-color:white;margin-top:60px;">
   <div class="container" style="text-align:justify;">
-
+    
   </div>
 </div>
