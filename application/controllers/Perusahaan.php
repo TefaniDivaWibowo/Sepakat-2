@@ -1,6 +1,6 @@
 <?php
   Class Perusahaan extends CI_Controller{
-    
+
     function __constuct(){
       parent::__constuct();
       $this->load->database();
@@ -21,14 +21,14 @@
     }
 
     /*public function dat_dir(){
-      
+
       $data['perusahaan'] = $this->Model_manufaktur->get_peru_single($_SESSION['id_user']);
       $data['provinsi']   = $this->Model_provinsi->select_data();
-      
+
       echo '<pre>';
       print_r($data);
       echo '</pre>';
-      
+
       $this->load->view('header');
       $this->load->view('perusahaan-profile', $data);
       $this->load->view('footer');
@@ -38,9 +38,9 @@
       $this->load->database();
       $this->load->model('Model_manufaktur');
       $this->load->model('Model_bahan_baku');
-      
+
       $data['query']    = $this->Model_manufaktur->get_peru_all($id);
-      
+
       $id_user          = $this->session->userdata('id_user');
       $data['kueri']    = $this->Model_bahan_baku->get_id_ban($id_user);
 
@@ -56,13 +56,13 @@
       $this->load->view('perusahaan-isidetail');
       $this->load->view('footer');
     }
-    
+
     public function getdetail(){
       $data = array(
         'nama' => $this->input->post('nama'),
         'deskripsi' => $this->input->post('deskripsi'),
       );
-      
+
       echo "<pre>";
       print_r($data);
       echo "</pre>";
@@ -71,26 +71,26 @@
     public function tipe(){
         $this->load->model('Model_manufaktur');
         // $ban = implode(',', $_POST['banyak']);
-            
+
             if($this->input->post('banyak[]') == NULL && $this->input->post('rad[]') == NULL && $this->input->post('tipes[]') !== NULL){
-              $keyword = implode(',', $_POST['tipes']); 
+              $keyword = implode(',', $_POST['tipes']);
               $data['query'] = $this->Model_manufaktur->carr($keyword);
-              
+
         $this->load->helper('url');
         $this->load->view('header');
         $this->load->view('perusahaan-list',$data);
         $this->load->view('footer');
             }elseif($this->input->post('banyak[]') !== NULL && $this->input->post('rad[]') == NULL && $this->input->post('tipes[]') == NULL){
-              $ban = implode(',', $_POST['banyak']); 
+              $ban = implode(',', $_POST['banyak']);
               $data['query'] = $this->Model_manufaktur->carri($ban);
-              
+
         $this->load->helper('url');
         $this->load->view('header');
         $this->load->view('perusahaan-list',$data);
         $this->load->view('footer');
             }elseif($this->input->post('banyak[]') == NULL && $this->input->post('tipes[]') == NULL && $this->input->post('rad[]') !== NULL)
             {
-              $rad = implode(',', $_POST['rad']); 
+              $rad = implode(',', $_POST['rad']);
               $data['query'] = $this->Model_manufaktur->carl($rad);
                $this->load->helper('url');
                $this->load->view('header');
@@ -101,14 +101,14 @@
 
     public function profile(){
       $this->load->model('Model_manufaktur');
-      
+
       $data['perusahaan'] = $this->Model_manufaktur->get_peru_single($_SESSION['id_user']);
       $data['provinsi']   = $this->Model_provinsi->select_data();
-      
+
       /*echo '<pre>';
       print_r($data);
       echo '</pre>';*/
-      
+
       $this->load->view('header');
       $this->load->view('perusahaan-profile', $data);
       $this->load->view('footer');
@@ -299,6 +299,37 @@
           }
       }
   }
-    
+
+  public function kerjasama(){
+      $this->load->model('model_kerjasama');
+
+      $id = $this->input->post('idb');
+
+      $data = array(
+          'id_manufaktur' => $this->input->post('idm'),
+          'id_bahan_baku'	=> $this->input->post('idb'),
+          'konfirmasi' 	=> 0,
+          'pengirim' 		=> 'Bahan Baku'
+      );
+
+      $this->model_kerjasama->tambah_kerjasama($data);
+
+      redirect('perusahaan/detail/'.$this->input->post('idm'));
+  }
+
+  public function notifikasi(){
+      $this->load->model('model_bahan_baku');
+      $this->load->model('model_manufaktur');
+      $this->load->model('model_kerjasama');
+
+      $notif = array('isinotif' => $this->model_kerjasama->get_kerjasama_manufaktur($_SESSION['id_manufaktur']),);
+      $this->session->set_userdata($notif);
+
+      echo "<pre>";
+      print_r($data);
+      print_r($_SESSION);
+      echo "</pre>";
+  }
+
 }
 ?>

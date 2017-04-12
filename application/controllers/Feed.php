@@ -14,7 +14,7 @@
 
       if ($row_pen = 1){
         $data['user'] = $this->model_feed->get_user_pen_all($id);
-      } 
+      }
 
       if ($row_per = 1) {
         $data['user'] = $this->model_feed->get_user_per_all($id);
@@ -28,11 +28,11 @@
       $this->load->view('feed_perusahaan', $data);
       $this->load->view('footer');
     }
-    
+
     public function add_perusahaan_feed(){
       $this->load->helper('url');
       $this->load->database();
-      
+
       $target_dir = "assets/images/posting/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
       $uploadOk = 1;
@@ -79,7 +79,7 @@
       // if everything is ok, try to upload file
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            
+
             $id   = $this->input->post('id_user');
 
             $data = array(
@@ -89,7 +89,7 @@
               'tanggal'       => date("Y/m/d"),
               'waktu'         => date("h:i:sa")
             );
-            
+
             $this->load->model('Model_feed');
             $this->Model_feed->addfeed($data);
             redirect('index.php/feed/perusahaan/'.$id);
@@ -118,7 +118,7 @@
           $this->load->view('footer');
         }
 
-	      
+
     }
   }
 ?>

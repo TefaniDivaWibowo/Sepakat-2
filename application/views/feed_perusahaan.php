@@ -60,33 +60,27 @@
       <a href="<?php echo base_url();?>hub/detail">
         <div class="row hub-head">
           <div class="col-md-1">
-
-          <?php
-            $icon     = $user[0]['icon'];
-            $gambar   = $query[0]['gambar'];
-          ?>
-
-            <img src="<?= base_url($icon); ?>" class="img-responsive"/>
+            <img src="<?php echo base_url("assets/images/logo/google.png"); ?>" class="img-responsive"/>
           </div>
           <div class="col-md-9">
-            <h2 style="margin-top:0;font-weight: 200;"><?= $user[0]['nama'];?></h2>
-            <span><i class="fa fa-fw fa-map-marker"></i><?= $user[0]['kota']; echo ", "; echo $user[0]['provinsi']?></span>
+            <h2 style="margin-top:0;font-weight: 200;">PT. Extra Steel Indonesia</h2>
+            <span><i class="fa fa-fw fa-map-marker"></i> Kuningan, Jawa Barat</span>
           </div>
           <div class="col-md-2 text-center">
             <span>2 jam yang lalu</span>
           </div>
         </div>
-        <div class="row hub-image" style="background-image:url('<?php echo base_url($gambar); ?>');"></div>
+        <div class="row hub-image" style="background-image:url('<?php echo base_url("assets/images/hub/hub1.jpg"); ?>');"></div>
         <div class="row hub-body">
           <div class="col-md-12">
-            <?= $query[0]['isi']?>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
         </div>
       </a>
         <div class="row hub-foot">
-          <!--<div class="col-xs-4">
+          <div class="col-xs-4">
             <span><i class="fa fa-fw fa-thumbs-o-up"></i> Like</span><br>
-          </div>-->
+          </div>
           <div class="col-md-8 pull-right text-right">
             <h5 style="margin-top:20px;">Bagikan di
               <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
@@ -97,7 +91,145 @@
           </div>
         </div>
       </div>
-    
+    <div class="xol-xs-12 hub-item">
+      <a href="<?php echo base_url();?>hub/detail">
+        <div class="row hub-head">
+          <div class="col-md-1">
+            <img src="<?php echo base_url("assets/images/logo/google.png"); ?>" class="img-responsive"/>
+          </div>
+          <div class="col-md-9">
+            <h2 style="margin-top:0;font-weight: 200;">PT. Extra Steel Indonesia</h2>
+            <span><i class="fa fa-fw fa-map-marker"></i> Kuningan, Jawa Barat</span>
+          </div>
+          <div class="col-md-2 text-center">
+            <span>2 jam yang lalu</span>
+          </div>
+        </div>
+        <div class="row hub-image" style="background-image:url('<?php echo base_url("assets/images/hub/hub2.png"); ?>');"></div>
+        <div class="row hub-body">
+          <div class="col-md-12">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
+      </a>
+        <div class="row hub-foot">
+          <div class="col-xs-4">
+            <span><i class="fa fa-fw fa-thumbs-o-up"></i> Like</span><br>
+          </div>
+          <div class="col-md-8 pull-right text-right">
+            <h5 style="margin-top:20px;">Bagikan di
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span>
+            </h5>
+          </div>
+        </div>
+      </div>
+    <div class="xol-xs-12 hub-item">
+      <a href="<?php echo base_url();?>hub/detail">
+        <div class="row hub-head">
+          <div class="col-md-1">
+            <img src="<?php echo base_url("assets/images/logo/google.png"); ?>" class="img-responsive"/>
+          </div>
+          <div class="col-md-9">
+            <h2 style="margin-top:0;font-weight: 200;">PT. Extra Steel Indonesia</h2>
+            <span><i class="fa fa-fw fa-map-marker"></i> Kuningan, Jawa Barat</span>
+          </div>
+          <div class="col-md-2 text-center">
+            <span>2 jam yang lalu</span>
+          </div>
+        </div>
+        <div class="row hub-image" style="background-image:url('<?php echo base_url("assets/images/hub/hub3.jpg"); ?>');"></div>
+        <div class="row hub-body">
+          <div class="col-md-12">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
+      </a>
+        <div class="row hub-foot">
+          <div class="col-xs-4">
+            <span><i class="fa fa-fw fa-thumbs-o-up"></i> Like</span><br>
+          </div>
+          <div class="col-md-8 pull-right text-right">
+            <h5 style="margin-top:20px;">Bagikan di
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span>
+            </h5>
+          </div>
+        </div>
+      </div>
+    <div class="xol-xs-12 hub-item">
+      <a href="<?php echo base_url();?>hub/detail">
+        <div class="row hub-head">
+          <div class="col-md-1">
+            <img src="<?php echo base_url("assets/images/logo/google.png"); ?>" class="img-responsive"/>
+          </div>
+          <div class="col-md-9">
+            <h2 style="margin-top:0;font-weight: 200;">PT. Extra Steel Indonesia</h2>
+            <span><i class="fa fa-fw fa-map-marker"></i> Kuningan, Jawa Barat</span>
+          </div>
+          <div class="col-md-2 text-center">
+            <span>2 jam yang lalu</span>
+          </div>
+        </div>
+        <div class="row hub-image" style="background-image:url('<?php echo base_url("assets/images/hub/hub4.jpg"); ?>');"></div>
+        <div class="row hub-body">
+          <div class="col-md-12">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
+      </a>
+        <div class="row hub-foot">
+          <div class="col-xs-4">
+            <span><i class="fa fa-fw fa-thumbs-o-up"></i> Like</span><br>
+          </div>
+          <div class="col-md-8 pull-right text-right">
+            <h5 style="margin-top:20px;">Bagikan di
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span>
+            </h5>
+          </div>
+        </div>
+      </div>
+    <div class="xol-xs-12 hub-item">
+      <a href="<?php echo base_url();?>hub/detail">
+        <div class="row hub-head">
+          <div class="col-md-1">
+            <img src="<?php echo base_url("assets/images/logo/google.png"); ?>" class="img-responsive"/>
+          </div>
+          <div class="col-md-9">
+            <h2 style="margin-top:0;font-weight: 200;">PT. Extra Steel Indonesia</h2>
+            <span><i class="fa fa-fw fa-map-marker"></i> Kuningan, Jawa Barat</span>
+          </div>
+          <div class="col-md-2 text-center">
+            <span>2 jam yang lalu</span>
+          </div>
+        </div>
+        <div class="row hub-image" style="background-image:url('<?php echo base_url("assets/images/hub/hub5.jpg"); ?>');"></div>
+        <div class="row hub-body">
+          <div class="col-md-12">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
+      </a>
+        <div class="row hub-foot">
+          <div class="col-xs-4">
+            <span><i class="fa fa-fw fa-thumbs-o-up"></i> Like</span><br>
+          </div>
+          <div class="col-md-8 pull-right text-right">
+            <h5 style="margin-top:20px;">Bagikan di
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x fa-inverse"></i></span>
+              <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span>
+            </h5>
+          </div>
+        </div>
       </div>
   </div>
 </div>

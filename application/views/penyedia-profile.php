@@ -59,6 +59,7 @@
       <input type="hidden" name="id_bab" value="<?= $penyedia[0]['id_bahan_baku'];?>"/>
 
         <div class="input-group input-data">
+          <label>Nama Penyedia</label>
           <input type="text" class="form-control" name="nama" placeholder="Nama penyedia" value="<?= $penyedia[0]['nama'];?>" />
         </div>
         <div class="input-group input-data">
@@ -81,7 +82,7 @@
                 } else {
                   echo "<option value=''>Provinsi</option>";
                 }
-                  foreach($provinsi as $data){ 
+                  foreach($provinsi as $data){
                     echo "<option value=" . $data['provinsi'] . "> ". $data['provinsi'] . "</option>"; }
                ?>
             </select>
@@ -105,7 +106,7 @@
                 } else {
                   echo "<option value=''>Kategori</option>";
                 }
-                  foreach($kategori as $data){ 
+                  foreach($kategori as $data){
                     echo "<option value=" . $data['kategori'] . "> ". $data['kategori'] . "</option>"; }
                ?>
             </select>
@@ -125,7 +126,7 @@
         <br>
       </div>
 
-      
+
       <br>
       <center>
         <input type="file" class="btn btn-primary" name="fileToUpload" id="fileToUpload"/>

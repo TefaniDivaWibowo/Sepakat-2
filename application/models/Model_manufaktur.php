@@ -5,7 +5,7 @@ Class Model_manufaktur extends CI_Model {
   function __construct(){
     $this->load->database();
   }
-  
+
   function get_peru_all($id){
       $query = $this->db->select('*')
                         ->from('manufaktur')
@@ -13,17 +13,17 @@ Class Model_manufaktur extends CI_Model {
                         ->get();
       return $query->result_array();
   }
-  
+
   function get_peru(){
     $query = $this->db->query("SELECT * FROM `manufaktur` WHERE `kota` IS NOT NULL");
     return $query->result_array();
   }
-  
+
   function get_peru_home(){
     $query = $this->db->query("SELECT * FROM `manufaktur` WHERE `kota` IS NOT NULL LIMIT 5");
     return $query->result_array();
   }
-  
+
   function get_peru_single($id){
     $query = $this->db
       ->select('*')
@@ -31,8 +31,19 @@ Class Model_manufaktur extends CI_Model {
       ->join('manufaktur','user.id_user = manufaktur.id_user')
       ->where('user.id_user',$id)
       ->get();
-      
+
     return $query->result_array();
+  }
+
+  function get_notif($id){
+    $query = $this->db
+      ->select('*')
+      ->from('kerjasama')
+      ->where('id_manufaktur', $id)
+      ->where('konfirmasi', 0)
+      ->where('pengirim', 'Bahan Baku')
+      ->get();
+    return $query->num_rows();
   }
 
   function select_data(){
@@ -44,7 +55,7 @@ Class Model_manufaktur extends CI_Model {
     ->get();
     return $manufaktur->result_array();
   }
-  
+
   function tambah_manufaktur($data){
     $this->db->insert('manufaktur', $data);
   }
@@ -54,7 +65,7 @@ Class Model_manufaktur extends CI_Model {
   $this->db->delete($table);
   }
 
-  function edit_manufaktur($where,$table){    
+  function edit_manufaktur($where,$table){
   return $this->db->get_where($table,$where);
   }
 
@@ -114,7 +125,7 @@ Class Model_manufaktur extends CI_Model {
         $query = $this->db->get('manufaktur');
         return $query->result_array();
       }
-      
+
     }
 
     public function update_profil($id, $data)

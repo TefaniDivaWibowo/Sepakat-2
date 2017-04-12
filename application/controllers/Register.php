@@ -23,7 +23,7 @@
 
 		if ($q == null) {
 		    if ($perusahaan == "Manufaktur") {
-		    	$data = array( 
+		    	$data = array(
 			        'username' 		=> $username,
 			        'password' 		=> md5($password),
 			        'perusahaan' 	=> $perusahaan
@@ -36,14 +36,14 @@
 				foreach ($query->result() as $row)
 				{
 				   $id = $row->id_user;
-				} 
+				}
 
-				$data_us = array( 
+				$data_us = array(
 					'nama'			=> $nama,
 		      'email' 		=> $username,
 		      'id_user'		=> $id
 				);
-  
+
 			    //enkripsi data
 			    $encrypted_id = md5($username);
 
@@ -55,7 +55,7 @@
 					'id_user' 		=> $id
 				);
 
-						$fromEmail          = "sepakat2317@gmail.com";
+				$fromEmail          = "sepakat2317@gmail.com";
 		        $isiEmail           = "Selamat Datang di Sepakat <br>
 																	Halo " .$nama.",<br><br>
 																	Anda baru saja mendaftar di Sepakat dengan data Login sebagai berikut: <br><br>
@@ -79,20 +79,20 @@
 		        $mail->Body 				= ($isiEmail);
 		        $toEmail            = $username; // siapa yg menerima email ini
 		        $mail->AddAddress($toEmail);
-		       
+
 						$this->model_register->update_kon($where_kon, $data_kon, 'user');
 
 						$this->model_register->add_man($data_us);
-					
+
 		        if(!$mail->Send()) {
-		          $this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Maaf server kami sedang sibuk.</div>');	
+		          $this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Maaf server kami sedang sibuk.</div>');
 							$this->load->view('login');
 		        } else {
-							$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Terima kasih telah bergabung dengan kami. Silahkan cek email Anda untuk mem-verifikasi akun.</div>');	
+							$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Terima kasih telah bergabung dengan kami. Silahkan cek email Anda untuk mem-verifikasi akun.</div>');
 							$this->load->view('login');
 						}
 			} else {
-				$data = array( 
+				$data = array(
 			        'username' 		=> $username,
 			        'password' 		=> md5($password),
 			        'konfirmasi' 	=> 0,
@@ -106,9 +106,9 @@
 				foreach ($query->result() as $row)
 				{
 				   $id = $row->id_user;
-				} 
+				}
 
-				$data_us = array( 
+				$data_us = array(
 					'nama'			=> $nama,
 		        	'email' 		=> $username,
 		        	'id_user'		=> $id
@@ -149,21 +149,21 @@
 						$mail->Body 				= ($isiEmail);
 		        $toEmail            = $username; // siapa yg menerima email ini
 		        $mail->AddAddress($toEmail);
-					
+
 						$this->model_register->update_kon($where_kon, $data_kon, 'user');
 
 						$this->model_register->add_ban($data_us);
-		       
+
 		        if(!$mail->Send()) {
-		          $this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Maaf server kami sedang sibuk.</div>');	
+		          $this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Maaf server kami sedang sibuk.</div>');
 							$this->load->view('login');
 		        } else {
-							$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Terima kasih telah bergabung dengan kami. Silahkan cek email Anda untuk mem-verifikasi akun.</div>');	
+							$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Terima kasih telah bergabung dengan kami. Silahkan cek email Anda untuk mem-verifikasi akun.</div>');
 							$this->load->view('login');
 		        }
 			}
 		} else {
-			$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Akun dengan email tersebut sudah ada!</div>');	
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Akun dengan email tersebut sudah ada!</div>');
 			$this->load->view('register');
 		}
     }
@@ -179,7 +179,7 @@
         	'konfirmasi' 	=> $encrypted_id
         );
 		$this->model_register->changeActiveState($where, $data, 'user');
-		$this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">Selamat, akun Anda telah aktif!</div>');	
+		$this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">Selamat, akun Anda telah aktif!</div>');
 		$this->load->view('login');
 		}
   }
