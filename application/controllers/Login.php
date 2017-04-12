@@ -27,16 +27,11 @@
 				break;
 		}
 
-<<<<<<< HEAD
 			if ($this->session->userdata('tipe_user') == "Bahan Baku"){
 				redirect('penyedia/profile?id='.$this->session->userdata('id_user'));
 			}
 			else if ($this->session->userdata('tipe_user') == "Admin") {
 				redirect('admin');
-=======
-			if ($this->session->userdata('tipe_user') == null){
-				$this->load->view('login', $data);
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
 			}
 			else if ($this->session->userdata('tipe_user') == "Manufaktur"){
 				redirect('perusahaan/profile?id='.$this->session->userdata('id_user'));
@@ -64,7 +59,6 @@
 // 			echo "</pre>";
 
 			if(null !== $q){
-<<<<<<< HEAD
 // 				$this->session->set_userdata('tipe_user', $q['perusahaan']);
 // 				$this->session->set_userdata('id_user', $q['id_user']);
 // 				$this->session->set_userdata('konfirmasi', $q['konfirmasi']);
@@ -111,18 +105,6 @@
 					} else {
 						redirect('index.php/feed/perusahaan?id='.$this->session->userdata('id_user'));
 					}
-=======
-				$this->session->set_userdata('tipe_user', $q['perusahaan']);
-				$this->session->set_userdata('id_user', $q['id_user']);
-				$this->session->set_userdata('konfirmasi', $q['konfirmasi']);
-				$this->session->set_userdata('username', $q['username']);
-				$this->session->set_userdata('status', 'login');
-
-				if($q['perusahaan'] == "manufaktur" && $q['konfirmasi'] == 1 ){
-					$this->load->view('header');
-					$this->load->view('rumah');
-					$this->load->view('footer');
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
 				}
 				else if($q['perusahaan'] == "Bahan Baku" && $q['konfirmasi'] == 1){
 					if($man['alamat'] == NULL){
@@ -167,15 +149,9 @@
 
 	public function logout()
 	{
-<<<<<<< HEAD
 // 		$this->session->unset_userdata('tipe_user');
 // 		$this->session->unset_userdata('id_user');
 // 		$this->session->sess_destroy();
-=======
-		$this->session->unset_userdata('tipe_user');
-		$this->session->unset_userdata('id_user');
-		$this->session->sess_destroy();
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
     session_destroy();
 		redirect(base_url());
 	}

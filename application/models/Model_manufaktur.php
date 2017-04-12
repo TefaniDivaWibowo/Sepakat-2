@@ -2,11 +2,11 @@
 
 Class Model_manufaktur extends CI_Model {
 
-<<<<<<< HEAD
   function __construct(){
     $this->load->database();
   }
-  
+  var $table = 'manufaktur';
+
   function get_peru_all($id){
       $query = $this->db->select('*')
                         ->from('manufaktur')
@@ -16,7 +16,7 @@ Class Model_manufaktur extends CI_Model {
   }
   
   function get_peru(){
-    $query = $this->db->query("SELECT * FROM `manufaktur` WHERE `kota` IS NOT NULL");
+    $query = $this->db->get('manufaktur');
     return $query->result_array();
   }
   
@@ -36,7 +36,15 @@ Class Model_manufaktur extends CI_Model {
     return $query->result_array();
   }
 
-  function select_data(){
+function select_data()
+ {
+  $query = $this->db->query('SELECT * 
+FROM  `manufaktur` 
+WHERE nama IS NOT NULL and alamat IS NOT NULL and no_telp IS NOT NULL and email IS NOT NULL and tipe IS NOT NULL and banyak_kebutuhan IS NOT NULL and barang_dibutuhkan IS NOT NULL and provinsi IS NOT NULL and kota IS NOT NULL');
+    return $query->result_array();
+ }
+
+  function select_datas(){
     $manufaktur = $this->db
     ->select('id_manufaktur, nama, alamat, no_telp, email, bukti, kategori.kategori, barang_dibutuhkan, manufaktur.provinsi, kota.kota')
     ->from('manufaktur')
@@ -65,46 +73,6 @@ Class Model_manufaktur extends CI_Model {
   }
 
   public function carri($ban)
-=======
-	function __construct(){
-		$this->load->database();
-	}
-
-	function get_peru(){
-		$query = $this->db->get('manufaktur');
-		return $query->result_array();
-	}
-
-	function select_data(){
-		$manufaktur = $this->db
-		->select('id_manufaktur, nama, alamat, no_telp, email, bukti, kategori.kategori, barang_dibutuhkan, manufaktur.provinsi, kota.kota')
-		->from('manufaktur')
-		->join('kategori', 'kategori.kategori = manufaktur.kategori')
-		->join('kota', 'kota.kota = manufaktur.kota')
-		->get();
-		return $manufaktur->result_array();
-	}
-	
-	function tambah_manufaktur($data){
-		$this->db->insert('manufaktur', $data);
-	}
-
-	function hapus_manufaktur($where,$table){
-	$this->db->where($where);
-	$this->db->delete($table);
-	}
-
-	function edit_manufaktur($where,$table){		
-	return $this->db->get_where($table,$where);
-	}
-
-	function update_manufaktur($where,$data,$table){
-		$this->db->where($where);
-		$this->db->update($table,$data);
-	}
-
-	public function carri($ban)
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
     {
        if($ban >=3000)
       {
@@ -143,11 +111,7 @@ Class Model_manufaktur extends CI_Model {
         $query = $this->db->get('manufaktur');
         return $query->result_array();
     }
-<<<<<<< HEAD
     public function carl($rad)
-=======
-	  public function carl($rad)
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
     {
       if($rad == "terbaru")
       {
@@ -162,7 +126,6 @@ Class Model_manufaktur extends CI_Model {
       
     }
 
-<<<<<<< HEAD
     public function update_profil($id, $data)
     {
     $this->db->where('id_user', $id)
@@ -199,8 +162,24 @@ Class Model_manufaktur extends CI_Model {
            ->get();
       return $search->row_array();
     }
-=======
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
+     function delete_row($id)
+  {
+  $this->db->where('id_manufaktur', $id);
+  $this->db->delete('manufaktur'); 
+  }
+  public function get_by_id($id)
+  {
+    $this->db->from($this->table);
+    $this->db->where('id_manufaktur',$id);
+    $query = $this->db->get();
+
+    return $query->row();
+  }
+  function update_manu($where,$data){
+    $this->db->where($where);
+    $this->db->update('manufaktur',$data);
+  }
+
 }
 
 ?>

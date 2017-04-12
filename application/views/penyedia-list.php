@@ -64,7 +64,6 @@
 <span>&nbsp;</span>
 <div class="container-fluid section1" style="padding-top:80px;">
   <div class="container">
-<<<<<<< HEAD
     <?php
         foreach ($query as $a) {
           $id       = $a['id_bahan_baku'];
@@ -72,14 +71,6 @@
     ?>
 
   <a href="<?= base_url('bahan_baku/showmore_detail/'.$id);?>">
-=======
-    <h3>Ditemukan 217 data, menampilkan 1-5</h3>
-    <?php
-        foreach ($query as $a) {
-            # code...
-          
-          ?>
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
     <div class="col-xs-12 company-item">
         <div class="row company-itemhead">
           <div class="col-md-1">
@@ -87,29 +78,19 @@
           </div>
           <div class="col-md-9">
             <h2 style="margin-top:0;font-weight: 200;"> <?php echo $a['nama'];?> <!-- PT. Extra Steel Indonesia --></h2>
-<<<<<<< HEAD
             <span class="label-primary"> Menghasilkan: <?php echo $a['barang_bahan'];?> </span>
-=======
-            <span style="color:#b0b0b0;">Pertambangan Logam</span>  <span class="label-primary">Membutuhkan : Batu Bara</span>
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
           </div>
           <div class="col-md-2 text-center">
             <span>2 jam yang lalu</span>
           </div>
       </div>
       <div class="row company-itembody">
-<<<<<<< HEAD
         <div class="col-md-12" align="justify">
           <?= $a['deskripsi'];?>
-=======
-        <div class="col-md-12">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
         </div>
       </div>
       <div class="row company-itemfoot">
         <div class="col-md-4">
-<<<<<<< HEAD
           <span><i class="fa fa-fw fa-map-marker"> </i><?= $a['provinsi'];?>, <?= $a['kota'];?></span><br>
         </div>
         <div class="col-md-4">
@@ -122,18 +103,6 @@
     </div>
 
   </a>
-=======
-          <span><i class="fa fa-fw fa-map-marker"></i> Kuningan, Jawa Barat</span><br>
-        </div>
-        <div class="col-md-4">
-          <span><i class="fa fa-fw fa-cubes"></i> 1-2 Ton / bulan</span>
-        </div>
-        <div class="col-md-4">
-          <span><i class="fa fa-fw fa-exchange"></i> Butuh Cepat</span>
-        </div>
-      </div>
-    </div>
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
    <?php  } ?>
   </div>
   <nav aria-label="Page navigation" class="text-center">

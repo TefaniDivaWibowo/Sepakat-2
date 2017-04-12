@@ -4,7 +4,7 @@ Class Model_provinsi extends CI_Model {
 	function __construct(){
 		$this->load->database();
 	}
-
+var $table = 'provinsi';
 	function select_data(){
 		$provinsi = $this->db
 		->select('*')
@@ -13,7 +13,7 @@ Class Model_provinsi extends CI_Model {
 		return $provinsi->result_array();
 	}
 
-	function tambah_provinsi($data){
+	function tambah_prov($data){
 		$this->db->insert('provinsi', $data);
 	}
 
@@ -30,6 +30,19 @@ Class Model_provinsi extends CI_Model {
 		$this->db->where('provinsi', $provinsi);
 		$this->db->update('provinsi', $data);
 	}
+	function delete_row($provinsi)
+  {
+  	$a = str_replace("%20", " ", $provinsi);
+ $this->db->query("DELETE FROM `provinsi` WHERE `provinsi` = '".$a."'");
+  }
+   public function get_by_id($id)
+  {
+    $this->db->from($this->table);
+    $this->db->where('provinsi',$id);
+    $query = $this->db->get();
+
+    return $query->row();
+  }
 }
 
 ?>

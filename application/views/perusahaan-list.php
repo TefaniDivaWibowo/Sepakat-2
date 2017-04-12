@@ -63,7 +63,6 @@
 <br>
 <div class="container-fluid section1" style="padding-top:80px;">
   <div class="container">
-<<<<<<< HEAD
     <!--<h3>Ditemukan 217 data, menampilkan 1-5</h3>-->
 
     <?php
@@ -73,32 +72,16 @@
     ?>
 
     <a href="<?php echo base_url('perusahaan/detail/'.$a['id_manufaktur']);?>"><div class="col-xs-12 company-item">
-=======
-    <h3>Ditemukan 217 data, menampilkan 1-5</h3>
-    <?php
-        foreach ($query as $a) {
-            # code...
-          
-          ?>
-    <a href="<?php echo base_url();?>perusahaan/detail"><div class="col-xs-12 company-item">
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
       <div class="row company-itemhead">
         <div class="col-md-1">
           <img src="<?php echo base_url($gambar); ?>" class="img-responsive"/>
         </div>
         <div class="col-md-9">
-<<<<<<< HEAD
           <h2 style="margin-top:0;font-weight: 200;"><?php echo $a['nama'];?></h2>
           <span class="label-primary">Membutuhkan: <?php echo $a['barang_dibutuhkan'];?></span>
-=======
-          <h2 style="margin-top:0;font-weight: 200;"><?php echo $a['nama'];?>
-          <!-- PT. Extra Steel Indonesia --></h2>
-          <span style="color:#b0b0b0;"><?php echo $a['kategori'];?></span>  <span class="label-primary">Membutuhkan : <?php echo $a['barang_dibutuhkan'];?></span>
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
         </div>
         <!--<div class="col-md-2 text-center">
           <span>2 jam yang lalu</span>
-<<<<<<< HEAD
         </div>-->
       </div>
       <div class="row company-itembody">
@@ -106,29 +89,14 @@
           <?php
             echo $a['deskripsi'];
           ?>
-=======
-          <span><?php echo $a['tipe'];?></span>
-        </div>
-      </div>
-      <div class="row company-itembody">
-        <div class="col-md-12">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
         </div>
       </div>
       <div class="row company-itemfoot">
         <div class="col-md-4">
-<<<<<<< HEAD
           <span><i class="fa fa-fw fa-map-marker"></i> <?php echo $a['provinsi'];?>, <?php echo $a['kota'];?></span><br>
         </div>
         <div class="col-md-4">
           <span><i class="fa fa-fw fa-cubes"></i> <?php echo $a['banyak_kebutuhan'];?> Kilogram / bulan</span>
-=======
-          <span><i class="fa fa-fw fa-map-marker"></i> <?php echo $a['alamat'];?>, <?php echo $a['provinsi'];?></span><br>
-        </div>
-        <div class="col-md-4">
-          <span><i class="fa fa-fw fa-cubes"></i> <?php echo $a['jumlah'];?> Kilogram / bulan</span>
->>>>>>> 1ec2a7517f7e212f3dc95bf547a7e160088be3e7
         </div>
         <div class="col-md-4">
           <span><i class="fa fa-fw fa-exchange"></i> <?php echo $a['tipe'];?></span>
