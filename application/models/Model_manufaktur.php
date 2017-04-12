@@ -165,7 +165,6 @@ Class Model_manufaktur extends CI_Model {
            ->get();
       return $search->row_array();
     }
-<<<<<<< HEAD
      function delete_row($id)
   {
   $this->db->where('id_manufaktur', $id);
@@ -184,8 +183,6 @@ Class Model_manufaktur extends CI_Model {
     $this->db->update('manufaktur',$data);
   }
 
-=======
->>>>>>> 7b463fa908b706bdb358b338cc8235315edf394a
 }
 
 ?>
