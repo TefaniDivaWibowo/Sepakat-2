@@ -25,11 +25,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/Sepakat-2/';
 
-$config['base_url'] = 'http://localhost/Sepekat/';
-
-$config['base_url'] = 'http://localhost/Sepakat/';
-
-
 /*
 |--------------------------------------------------------------------------
 | Index File
